@@ -97,7 +97,7 @@
                     ";
                 $lesInformations = $mysqli->query($laQuestionEnSql);
                 // Vérification
-                if ( ! $lesInformations)
+                if (!$lesInformations) // =! présence de $lesInformations (si la requête query ne réussit pas et que $lesInformations ne se forme pas)
                 {
                     echo "<article>";
                     echo("Échec de la requete : " . $mysqli->error);
@@ -123,13 +123,13 @@
                         <h3>
                             <time><?php echo $post['created'] ?></time>
                         </h3>
-                        <address>AREMPLACER</address>
+                        <address><?php echo $post['author_name'] ?></address>
                         <div>
-                            <p>AREMPLACER</p>
+                            <p><?php echo $post['content'] ?></p>
                         </div>
                         <footer>
-                            <small>♥ AREMPLACER </small>
-                            <a href="">AREMPLACER</a>,
+                            <small>♥ <?php echo $post['like_number'] ?></small>
+                            <a href=""><?php echo $post['taglist'] ?></a>
                         </footer>
                     </article>
                     <?php
