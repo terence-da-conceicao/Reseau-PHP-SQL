@@ -35,7 +35,7 @@
             </aside>
             <main>
                 <!-- L'article qui suit est un exemple pour la présentation et 
-                  @todo: doit etre retiré -->
+                  @todo: doit etre retiré
                 <article>
                     <h3>
                         <time datetime='2020-02-01 11:12:13' >31 février 2010 à 11h12</time>
@@ -53,7 +53,7 @@
                         <a href="">#lorem</a>,
                         <a href="">#piscitur</a>,
                     </footer>
-                </article>               
+                </article> -->
 
                 <?php
                 /*
@@ -66,7 +66,7 @@
                  */
 
                 // Etape 1: Ouvrir une connexion avec la base de donnée.
-                $mysqli = new mysqli("localhost", "root", "root", "socialnetwork");
+                $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
                 //verification
                 if ($mysqli->connect_errno)
                 {
