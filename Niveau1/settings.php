@@ -14,26 +14,7 @@
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
-        <header>
-            <img src="resoc.jpg" alt="Logo de notre réseau social"/>
-            <nav id="menu">
-                <a href="news.php">Actualités</a>
-                <a href="wall.php?user_id=<?php echo $userId ?>">Mur</a>
-                <a href="feed.php?user_id=<?php echo $userId ?>">Flux</a>
-                <!-- <a href="tags.php?tag_id= -->
-               <!-- et là on met le php userId etc echo amchin --> 
-                <!-- */ ">Mots-clés</a> -->
-            </nav>
-            <nav id="user">
-                <a href="#">Profil</a>
-                <ul>
-                    <li><a href="settings.php?user_id=<?php echo $userId ?>">Paramètres</a></li>
-                    <li><a href="followers.php?user_id=<?php echo $userId ?>">Mes suiveurs</a></li>
-                    <li><a href="subscriptions.php?user_id=<?php echo $userId ?>">Mes abonnements</a></li>
-                </ul>
-
-            </nav>
-        </header>
+    <?php include 'header.php' ?>;
         <div id="wrapper" class='profile'>
 
 
@@ -60,7 +41,7 @@
                 /**
                  * Etape 2: se connecter à la base de donnée
                  */
-                $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
+                include 'sql_connect.php';
 
                 /**
                  * Etape 3: récupérer le nom de l'utilisateur
