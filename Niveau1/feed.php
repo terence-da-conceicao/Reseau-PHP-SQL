@@ -22,34 +22,33 @@
             ?>
             <?php
             include 'sql_connect.php';
+            connect();
             ?>
 
             <aside>
                 <?php
-                /**
-                 * Etape 3: récupérer le nom de l'utilisateur
-                 */
+                // Etape 3: récupérer le nom de l'utilisateur
+                
                 $laQuestionEnSql = "SELECT * FROM `users` WHERE id= '$userId' ";
-                $lesInformations = $mysqli->query($laQuestionEnSql);
+                $lesInformations = sql_query($laQuestionEnSql);
                 $user = $lesInformations->fetch_assoc();
-                //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par l'alias et effacer la ligne ci-dessous
-                //echo "<pre>" . print_r($user, 1) . "</pre>";
+                
                 ?>
+
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
-                    <p>Sur cette page vous trouverez tous les message des utilisatrices
+                        <p>Sur cette page vous trouverez tous les message des utilisatrices
                         auxquel est abonnée l'utilisatrice <?php echo $user ['alias'] ?>
                         (n° <?php echo $userId ?>)
-                    </p>
+                        </p>
 
                 </section>
             </aside>
             <main>
                 <?php
-                /**
-                 * Etape 3: récupérer tous les messages des abonnements
-                 */
+                // Etape 3: récupérer tous les messages des abonnements
+                
                 $laQuestionEnSql = "
                     SELECT posts.content,
                     posts.created,
@@ -66,35 +65,32 @@
                     GROUP BY posts.id
                     ORDER BY posts.created DESC  
                     ";
-                $lesInformations = $mysqli->query($laQuestionEnSql);
+                $lesInformations = sql_query($laQuestionEnSql);;
                 if ( ! $lesInformations)
                 {
                     echo("Échec de la requete : " . $mysqli->error);
                 }
 
-                /**
-                 * Etape 4: @todo Parcourir les messsages et remplir correctement le HTML avec les bonnes valeurs php
-                 * A vous de retrouver comment faire la boucle while de parcours...
-                 */
+                // Etape 4: Parcourir les messsages et remplir le HTML
+                 
                 while ($user = $lesInformations->fetch_assoc())
                 {
-                ?>                
+                ?>
+                                
                 <article>
                     <h3>
                         <time datetime='2020-02-01 11:12:13' ><?php echo $user['created'] ?></time>
                     </h3>
-                    <address><?php echo $user['author_name'] ?></address>
+                        <address><?php echo $user['author_name'] ?></address>
                     <div>
                         <p><?php echo $user['content'] ?></p>
                     </div>                                            
                     <footer>
                         <small>♥ <?php echo $user['like_number'] ?></small>
                         <a href=""><?php echo $user['taglist'] ?></a>
-                        <!--<a href="">#piscitur</a>,-->
                     </footer>
                 </article>
                 <?php
-                // et de pas oublier de fermer ici vote while
                 }
                 ?>
 

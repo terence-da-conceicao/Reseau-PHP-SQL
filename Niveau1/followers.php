@@ -25,7 +25,8 @@
                     $userId = intval($_GET['user_id']);
 
                     // Etape 2: se connecter à la base de donnée
-                    include 'sql_connect.php'; connect();
+                    include 'sql_connect.php'; 
+                    connect();
 
                     // Etape 3: récupérer le nom de l'utilisateur
                     $laQuestionEnSql = "

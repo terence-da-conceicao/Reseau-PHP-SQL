@@ -24,34 +24,30 @@
              * Etape 2: se connecter à la base de donnée
              */
             include 'sql_connect.php';
+            connect();
             ?>
 
             <aside>
                 <?php
-                /**
-                 * Etape 3: récupérer le nom du mot-clé
-                 */
+                // Etape 3: récupérer le nom du mot-clé
                 $laQuestionEnSql = "SELECT * FROM tags WHERE id= '$tagId' ";
-                $lesInformations = $mysqli->query($laQuestionEnSql);
+                $lesInformations = sql_query($laQuestionEnSql);
                 $tag = $lesInformations->fetch_assoc();
-                //@todo: afficher le résultat de la ligne ci dessous, remplacer XXX par le label et effacer la ligne ci-dessous
-                //echo "<pre>" . print_r($tag, 1) . "</pre>";
                 ?>
+
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
-                    <p>Sur cette page vous trouverez les derniers messages comportant
+                        <p>Sur cette page vous trouverez les derniers messages comportant
                         le mot-clé <?php echo $tag['label'] ?>
                         (n° <?php echo $tagId ?>)
-                    </p>
+                        </p>
 
                 </section>
             </aside>
             <main>
                 <?php
-                /**
-                 * Etape 3: récupérer tous les messages avec un mot clé donné
-                 */
+                // Etape 3: récupérer tous les messages avec un mot clé donné
                 $laQuestionEnSql = "
                     SELECT posts.content,
                     posts.created,
@@ -68,40 +64,33 @@
                     GROUP BY posts.id
                     ORDER BY posts.created DESC  
                     ";
-                $lesInformations = $mysqli->query($laQuestionEnSql);
+                $lesInformations = sql_query($laQuestionEnSql);
                 if ( ! $lesInformations)
                 {
                     echo("Échec de la requete : " . $mysqli->error);
                 }
 
-                /**
-                 * Etape 4: @todo Parcourir les messsages et remplir correctement le HTML avec les bonnes valeurs php
-                 */
+                // Etape 4: Parcourir les messsages et remplir le HTML
                 while ($post = $lesInformations->fetch_assoc())
                 {
+                ?>
 
-                    //echo "<pre>" . print_r($post, 1) . "</pre>";
-                    ?>                
                     <article>
                         <h3>
                             <time datetime='2020-02-01 11:12:13' ><?php echo $post['created'] ?></time>
                         </h3>
-                        <address>par <?php echo $post['author_name'] ?></address>
+                            <address>par <?php echo $post['author_name'] ?></address>
                         <div>
                             <p><?php echo $post['content'] ?></p>
-                            <!-- <p>Ceci est un autre paragraphe</p>
-                            <p>... de toutes manières il faut supprimer cet 
-                                article et le remplacer par des informations en 
-                                provenance de la base de donnée</p> -->
                         </div>                                            
                         <footer>
                             <small>♥ <?php echo $post['like_number'] ?></small>
-                            <a href="">#lorem</a>,
-                            <a href="">#<?php echo $post['taglist'] ?></a>,
+                            <a href="">#<?php echo $post['taglist'] ?></a>
                         </footer>
                     </article>
-                <?php } ?>
-
+                <?php
+                }
+                ?>
 
             </main>
         </div>
