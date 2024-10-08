@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="fr">
-<?php 
-    if (isset($_GET['user_id'])) {
-        $userId = intval($_GET['user_id']);
-    } else {
-        echo "ID d'utilisatrice inconnu";
-    } ?>
+
+    <?php 
+        if (isset($_GET['user_id'])) {
+            $userId = intval($_GET['user_id']);
+        } else {
+            echo "ID d'utilisatrice inconnu";
+        } 
+    ?>
 
     <head>
         <meta charset="utf-8">
@@ -13,39 +15,30 @@
         <meta name="author" content="Julien Falconnet">
         <link rel="stylesheet" href="style.css"/>
     </head>
+
     <body>
-    <?php include 'header.php' ?>;
-        <div id="wrapper" class='profile'>
+        <?php include 'header.php' ?>;
+        <?php include 'sql_connect.php'; connect() ?>;
 
+            <div id="wrapper" class='profile'>
+                <aside>
+                    <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
+                    <section>
+                        <h3>Présentation</h3>
+                        <p>Sur cette page vous trouverez les informations de l'utilisatrice
+                            n° <?php echo intval($_GET['user_id']) ?></p>
+                    </section>
+                </aside>
+                <main>
 
-            <aside>
-                <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
-                <section>
-                    <h3>Présentation</h3>
-                    <p>Sur cette page vous trouverez les informations de l'utilisatrice
-                        n° <?php echo intval($_GET['user_id']) ?></p>
-
-                </section>
-            </aside>
-            <main>
                 <?php
-                /**
-                 * Etape 1: Les paramètres concernent une utilisatrice en particulier
-                 * La première étape est donc de trouver quel est l'id de l'utilisatrice
-                 * Celui ci est indiqué en parametre GET de la page sous la forme user_id=...
-                 * Documentation : https://www.php.net/manual/fr/reserved.variables.get.php
-                 * ... mais en résumé c'est une manière de passer des informations à la page en ajoutant des choses dans l'url
-                 */
-                // $userId = intval($_GET['user_id']);
 
-                /**
-                 * Etape 2: se connecter à la base de donnée
-                 */
-                include 'sql_connect.php';
+                //Etape 1: trouver l'id
 
-                /**
-                 * Etape 3: récupérer le nom de l'utilisateur
-                 */
+                // Etape 2: se connecter à la base de donnée
+
+                // Etape 3: récupérer le nom de l'utilisateur
+
                 $laQuestionEnSql = "
                     SELECT users.*, 
                     count(DISTINCT posts.id) as totalpost, 
@@ -58,21 +51,14 @@
                     WHERE users.id = '$userId' 
                     GROUP BY users.id
                     ";
-                $lesInformations = $mysqli->query($laQuestionEnSql);
-                if ( ! $lesInformations)
-                {
-                    echo("Échec de la requete : " . $mysqli->error);
-                }
+                
+                $lesInformations = sql_query($laQuestionEnSql);
                 $user = $lesInformations->fetch_assoc();
 
-                
+                ?> 
 
-                /**
-                 * Etape 4: à vous de jouer
-                 */
-                //@todo: afficher le résultat de la ligne ci dessous, remplacer les valeurs ci-après puiseffacer la ligne ci-dessous
-                //echo "<pre>" . print_r($userId, 1) . "</pre>";
-                ?>                
+                <!-- Etape 4  -->
+                              
                 <article class='parameters'>
                     <h3>Mes paramètres</h3>
                     <dl>
@@ -87,7 +73,6 @@
                         <dt>Nombre de "J'aime" reçus</dt>
                         <dd><?php echo $user['totalreceived'] ?></dd>
                     </dl>
-
                 </article>
             </main>
         </div>
