@@ -109,7 +109,7 @@
                     </div>                                            
                     <footer>
                         <small>♥ <?php echo $user['like_number'] ?></small>
-                        <a href=""><?php echo $user['taglist'] ?></a>,
+                        <a href=""><?php echo $user['taglist'] ?></a>
                         <!--<a href="">#piscitur</a>,-->
                     </footer>
                 </article>
