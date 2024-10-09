@@ -19,6 +19,7 @@
             /**
              * Etape 1: Le mur concerne un utilisateur en particulier
              */
+            // Etape 1: Le mur concerne un utilisateur en particulier
             $userId = intval($_GET['user_id']);
             ?>
             <?php
@@ -34,6 +35,7 @@
                 $lesInformations = sql_query($laQuestionEnSql);
                 $user = $lesInformations->fetch_assoc();
                 
+                                                
                 ?>
 
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
