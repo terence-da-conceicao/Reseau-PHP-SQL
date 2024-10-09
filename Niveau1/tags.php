@@ -8,6 +8,7 @@
     </head>
     <body>
     <?php include 'header.php' ?>;
+    
         <div id="wrapper">
             <?php
             /**

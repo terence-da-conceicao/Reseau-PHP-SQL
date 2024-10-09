@@ -8,6 +8,7 @@
     </head>
     <body>
     <?php include 'header.php' ?>;
+    
         <div id="wrapper">
             <aside>
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>

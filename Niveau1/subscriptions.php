@@ -8,15 +8,14 @@
     </head>
     <body>
     <?php include 'header.php' ?>;
+    
         <div id="wrapper">
             <aside>
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
-                    <p>Sur cette page vous trouverez la liste des personnes dont
-                        l'utilisatrice
-                        n° <?php echo intval($_GET['user_id']) ?>
-                        suit les messages
+                    <p>L'utilisatrice n° <?php echo intval($_GET['user_id']) ?>
+                        suit les personnes suivantes : 
                     </p>
 
                 </section>
