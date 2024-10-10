@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php 
         $titre = 'ReSoC - Flux';
-        include 'header.php';
+        include './Assets/includes/header.php';
         showHead($titre);
     ?>
     <body>
@@ -14,7 +14,7 @@
         <div id="wrapper">
             <?php $userId = intval($_GET['user_id']); ?>
 
-            <?php include 'sql_connect.php';
+            <?php include './Assets/includes/sql_connect.php';
             connect(); ?>
             
             <aside>
@@ -25,7 +25,7 @@
                     $user = $lesInformations->fetch_assoc();             
                 ?>
 
-                <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
+                <img src="./Assets/Images/user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
                         <p>Sur cette page vous trouverez tous les message des utilisatrices

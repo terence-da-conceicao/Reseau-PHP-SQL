@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php 
         $titre = 'ReSoC - Actualités';
-        include 'header.php';
+        include './Assets/includes/header.php';
         showHead($titre);
     ?>
 
@@ -13,7 +13,7 @@
 
         <div id="wrapper">
             <aside>
-                <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
+                <img src="./Assets/Images/user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
                     <p>Sur cette page vous trouverez les derniers messages de
@@ -24,7 +24,7 @@
                 
                 <?php
                 // Etape 1: Ouvrir une connexion avec la base de donnée + verification.
-                include 'sql_connect.php';
+                include './Assets/includes/sql_connect.php';
                 connect();
 
                 // Etape 2: Poser une question à la base de donnée et récupérer ses informations + vérification

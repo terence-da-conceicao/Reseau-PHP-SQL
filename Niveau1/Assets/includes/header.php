@@ -6,7 +6,7 @@ function showHead($titre) {
         <meta charset='utf-8'>
         <title>$titre</title> 
         <meta name='author' content='Julien Falconnet'>
-        <link rel='stylesheet' href='style.css'/>
+        <link rel='stylesheet' href='./Assets/CSS/style.css'/>
         </head>";
 }
 ?>
@@ -20,11 +20,11 @@ function render_header() {
                 <meta charset="utf-8">
                 <title>ReSoC - Administration</title> 
                 <meta name="author" content="Julien Falconnet">
-                <link rel="stylesheet" href="style.css"/>
+                <link rel="stylesheet" href="./Assets/CSS/style.css"/>
             </head>
             <body>
                 <header>
-                    <img src="resoc.jpg" alt="Logo de notre réseau social"/>
+                    <img src="./Assets/Images/resoc.jpg" alt="Logo de notre réseau social"/>
                     <nav id="menu">
                         <a href="news.php">Actualités</a>
                         <a href="wall.php?user_id=5">Mur</a>

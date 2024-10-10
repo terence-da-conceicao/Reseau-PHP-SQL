@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php 
         $titre = 'ReSoC - Paramètres';
-        include 'header.php';
+        include './Assets/includes/header.php';
         showHead($titre);
     ?>
 
@@ -19,12 +19,12 @@
         render_header();
         echo "SETTINGS"; ?>
 
-        <?php include 'sql_connect.php'; 
+        <?php include './Assets/includes/sql_connect.php'; 
         connect(); ?>
 
             <div id="wrapper" class='profile'>
                 <aside>
-                    <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
+                    <img src="./Assets/Images/user.jpg" alt="Portrait de l'utilisatrice"/>
                     <section>
                         <h3>Présentation</h3>
                         <p>Sur cette page vous trouverez les informations de l'utilisatrice

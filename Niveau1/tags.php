@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php 
         $titre = 'Messages par mots-clés';
-        include 'header.php';
+        include './Assets/includes/header.php';
         showHead($titre);
     ?>
 
@@ -26,7 +26,7 @@
             /**
              * Etape 2: se connecter à la base de donnée
              */
-            include 'sql_connect.php';
+            include './Assets/includes/sql_connect.php';
             connect();
             ?>
 
@@ -38,7 +38,7 @@
                 $tag = $lesInformations->fetch_assoc();
                 ?>
 
-                <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
+                <img src="./Assets/Images/user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
                         <p>Sur cette page vous trouverez les derniers messages comportant

@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php 
         $titre = 'ReSoC - Mes abonné.e.s';
-        include 'header.php';
+        include './Assets/includes/header.php';
         showHead($titre);
     ?>
 
@@ -13,7 +13,7 @@
     
         <div id="wrapper">          
             <aside>
-                <img src = "user.jpg" alt = "Portrait de l'utilisatrice"/>
+                <img src = "./Assets/Images/user.jpg" alt = "Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
                     <p>Sur cette page vous trouverez la liste des personnes qui
@@ -28,7 +28,7 @@
                     $userId = intval($_GET['user_id']);
 
                     // Etape 2: se connecter à la base de donnée
-                    include 'sql_connect.php'; 
+                    include './Assets/includes/sql_connect.php'; 
                     connect();
 
                     // Etape 3: récupérer le nom de l'utilisateur
@@ -54,7 +54,7 @@
                     { 
                         ?>
                         <article>
-                            <img src="user.jpg" alt="blason"/>
+                            <img src="./Assets/Images/user.jpg" alt="blason"/>
                             <h3><?php echo $follower['alias']?></h3>
                             <p>id : <?php echo $follower['id']?></p>
                         </article>

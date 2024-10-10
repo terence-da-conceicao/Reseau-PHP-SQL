@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php 
         $titre = 'ReSoC - Administration';
-        include 'header.php';
+        include './Assets/includes/header.php';
         showHead($titre);
     ?>
 
@@ -11,7 +11,7 @@
         render_header();
         echo "ADMIN"; ?>
         
-        <?php include 'sql_connect.php';
+        <?php include './Assets/includes/sql_connect.php';
         connect(); ?>
 
         <div id="wrapper" class='admin'>

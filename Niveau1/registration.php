@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php 
         $titre = 'ReSoC - Inscription';
-        include 'header.php';
+        include './Assets/includes/header.php';
         showHead($titre);
     ?>
 

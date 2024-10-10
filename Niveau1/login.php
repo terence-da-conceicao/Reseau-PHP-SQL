@@ -6,7 +6,7 @@ session_start();
 <html lang="fr">
     <?php 
         $titre = 'ReSoC - Login';
-        include 'header.php';
+        include './Assets/includes/header.php';
         showHead($titre);
     ?>
     <body>

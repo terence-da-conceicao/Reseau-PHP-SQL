@@ -2,7 +2,7 @@
 <html lang="fr">
     <?php 
         $titre = 'ReSoC - Abonnements';
-        include 'header.php';
+        include './Assets/includes/header.php';
         showHead($titre);
     ?>
 
@@ -15,7 +15,7 @@
 
         <div id="wrapper">
             <aside>
-                <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
+                <img src="./Assets/Images/user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
                     <p>L'utilisatrice n° <?php echo intval($_GET['user_id']) ?>
@@ -29,7 +29,7 @@
                 // Etape 1: récupérer l'id de l'utilisateur
                 $userId = intval($_GET['user_id']);
                 // Etape 2: se connecter à la base de donnée
-                include 'sql_connect.php';
+                include './Assets/includes/sql_connect.php';
                 connect();
                 // Etape 3: récupérer le nom de l'utilisateur
                 $laQuestionEnSql = "
@@ -54,7 +54,7 @@
                 { 
                 ?>
                 <article>
-                    <img src="user.jpg" alt="blason"/>
+                    <img src="./Assets/Images/user.jpg" alt="blason"/>
                     <h3><?php echo $followed['alias']?></h3>
                     <p>id : <?php echo $followed['id']?></p>                    
                 </article>
