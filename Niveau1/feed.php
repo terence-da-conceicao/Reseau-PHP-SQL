@@ -7,19 +7,12 @@
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
-        <?php include 'header.php' ?>;
+        <?php include 'header.php';
+        render_header() ?>;
         
         <div id="wrapper">
             <?php
-            /**
-             * Cette page est TRES similaire à wall.php. 
-             * Vous avez sensiblement à y faire la meme chose.
-             * Il y a un seul point qui change c'est la requete sql.
-             */
-            /**
-             * Etape 1: Le mur concerne un utilisateur en particulier
-             */
-            // Etape 1: Le mur concerne un utilisateur en particulier
+
             $userId = intval($_GET['user_id']);
             ?>
             <?php

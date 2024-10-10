@@ -7,14 +7,11 @@
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
-    <?php include 'header.php' ?>;
+    <?php include 'header.php';
+    render_header(); ?>;
 
         <div id="wrapper" >
-
-            <aside>
-                <h2>Présentation</h2>
-                <p>Bienvenu sur notre réseau social.</p>
-            </aside>
+    <?php bienvenue(); ?>
             <main>
                 <article>
                     <h2>Inscription</h2>

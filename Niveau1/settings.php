@@ -17,7 +17,8 @@
     </head>
 
     <body>
-        <?php include 'header.php' ?>;
+        <?php include 'header.php';
+        render_header(); ?>;
         <?php include 'sql_connect.php'; 
         connect() ?>;
 

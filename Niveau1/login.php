@@ -11,13 +11,11 @@ session_start();
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
-    <?php include 'header.php' ?>;
+    <?php include 'header.php';
+    render_header(); ?>
 
         <div id="wrapper" >
-            <aside>
-                <h2>Présentation</h2>
-                <p>Bienvenue sur notre réseau social.</p>
-            </aside>
+    <?php bienvenue(); ?>
             <main>
                 <article>
                     <h2>Connexion</h2>
