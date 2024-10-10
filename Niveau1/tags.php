@@ -1,15 +1,15 @@
 <!doctype html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>ReSoC - Les message par mot-clé</title> 
-        <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
-    </head>
+    <?php 
+        $titre = 'Messages par mots-clés';
+        include 'header.php';
+        showHead($titre);
+    ?>
+
     <body>
-    <?php include 'header.php';
-    render_header();
-    echo "TAGS"; ?>
+    <?php
+        render_header();
+        echo "TAGS"; ?>
     
         <div id="wrapper">
             <?php

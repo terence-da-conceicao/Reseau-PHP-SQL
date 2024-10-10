@@ -1,15 +1,14 @@
 <!doctype html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>ReSoC - Mur</title> 
-        <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
-    </head>
+    <?php 
+        $titre = 'Mur';
+        include 'header.php';
+        showHead($titre);
+    ?>
     <body>
-    <?php include 'header.php';
-    render_header();
-    echo "WALL"; ?>
+    <?php
+        render_header();
+        echo "WALL"; ?>
 
         <div id="wrapper">
             <?php

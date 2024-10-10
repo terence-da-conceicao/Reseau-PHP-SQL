@@ -1,5 +1,17 @@
 
 <?php 
+function showHead($titre) {
+       echo 
+        "<head>
+        <meta charset='utf-8'>
+        <title>$titre</title> 
+        <meta name='author' content='Julien Falconnet'>
+        <link rel='stylesheet' href='style.css'/>
+        </head>";
+}
+?>
+
+<?php 
 function render_header() {
     echo
     '<!doctype html>

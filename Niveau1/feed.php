@@ -1,13 +1,12 @@
 <!doctype html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>ReSoC - Flux</title>         
-        <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
-    </head>
+    <?php 
+        $titre = 'ReSoC - Flux';
+        include 'header.php';
+        showHead($titre);
+    ?>
     <body>
-        <?php include 'header.php';
+        <?php
         render_header();
         echo "FEED"; ?>
         
@@ -34,7 +33,7 @@
                         (n° <?php echo $userId ?>)</p>
                 </section>
             </aside>
-            
+
             <main>
                 <?php
                 // Etape 3: récupérer tous les messages des abonnements

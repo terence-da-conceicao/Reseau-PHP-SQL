@@ -1,16 +1,18 @@
 <!doctype html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>ReSoC - Mes abonnements</title> 
-        <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
-    </head>
+    <?php 
+        $titre = 'ReSoC - Abonnements';
+        include 'header.php';
+        showHead($titre);
+    ?>
+
     <body>
-    <?php include 'header.php';
-    render_header(); 
-    echo "SUBSCRIPTIONS"; ?>
+    <?php
+        render_header(); 
+        echo "SUBSCRIPTIONS"; ?>
     
+<!--connexion sql_connect? -->
+
         <div id="wrapper">
             <aside>
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>

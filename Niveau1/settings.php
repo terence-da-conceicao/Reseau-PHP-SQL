@@ -1,5 +1,10 @@
 <!doctype html>
 <html lang="fr">
+    <?php 
+        $titre = 'ReSoC - Paramètres';
+        include 'header.php';
+        showHead($titre);
+    ?>
 
     <?php 
         if (isset($_GET['user_id'])) {
@@ -9,15 +14,8 @@
         } 
     ?>
 
-    <head>
-        <meta charset="utf-8">
-        <title>ReSoC - Paramètres</title> 
-        <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
-    </head>
-
     <body>
-        <?php include 'header.php';
+        <?php
         render_header();
         echo "SETTINGS"; ?>
 
