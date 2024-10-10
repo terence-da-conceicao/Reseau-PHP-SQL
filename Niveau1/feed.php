@@ -79,16 +79,16 @@
                  
                 while ($user = $lesInformations->fetch_assoc())
                 {
+
+                include 'generated_url.php';
+
                 ?>
                                 
                 <article>
                     <h3>
                         <time datetime='2020-02-01 11:12:13' ><?php echo $user['created'] ?></time>
                     </h3>
-                        <address>
-                        <a href="./wall.php?user_id=<?php echo ($user['id']) ?>">    
-                        <?php echo $user['author_name'] ?></address>
-                        <a href="http://localhost/Reseau-PHP-SQL/Niveau1/wall.php?user_id=<?php echo ($user['id']) ?>">    
+                        <address> <a href="<?php echo $wallUrl ?>?user_id=<?php echo ($user['id']) ?>">    
                         <?php echo $user['author_name'] ?> </a>
                         </address>
                     <div>

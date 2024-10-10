@@ -46,12 +46,16 @@
                     exit();
                 }
 
+                include 'generated_url.php';
+
                 while ($followed = $lesInformations->fetch_assoc())
                 { 
                 ?>
                 <article>
                     <img src="user.jpg" alt="blason"/>
-                    <h3><?php echo $followed['alias']?></h3>
+                    <h3> <a href="<?php echo $wallUrl ?>?user_id=<?php echo ($followed['id']) ?>">
+                    <?php echo $followed['alias']?> </a>
+                    </h3>
                     <p>id : <?php echo $followed['id']?></p>                    
                 </article>
                 <?php

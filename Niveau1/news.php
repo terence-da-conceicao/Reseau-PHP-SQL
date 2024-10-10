@@ -52,6 +52,8 @@
                     exit();
                 }
 
+                include 'generated_url.php';
+
                 // Etape 3: Parcourir ces données et les ranger bien comme il faut dans du html
                 // NB: à chaque tour du while, la variable post ci dessous reçois les informations du post suivant.
                 while ($post = $lesInformations->fetch_assoc())
@@ -70,7 +72,8 @@
                         <h3>
                             <time><?php echo $post['created'] ?></time>
                         </h3>
-                            <address><?php echo $post['author_name'] ?></address>
+                            <address> <a href="<?php echo $wallUrl ?>?user_id=<?php echo ($post['id']) ?>">
+                            <?php echo $post['author_name'] ?> </a> </address>
                         <div>
                             <p><?php echo $post['content'] ?></p>
                         </div>
