@@ -8,7 +8,7 @@
     </head>
     <body>
     <?php include 'header.php' ?>;
-    
+
         <div id="wrapper">
             <aside>
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
@@ -30,6 +30,7 @@
                     SELECT posts.content,
                     posts.created,
                     users.alias as author_name,  
+                    users.id,
                     count(likes.id) as like_number,  
                     GROUP_CONCAT(DISTINCT tags.label) AS taglist 
                     FROM posts

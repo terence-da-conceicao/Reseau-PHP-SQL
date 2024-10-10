@@ -40,7 +40,7 @@
                 <section>
                     <h3>Présentation</h3>
                         <p>Sur cette page vous trouverez tous les message des utilisatrices
-                        auxquel est abonnée l'utilisatrice <a href="http://localhost/Reseau-PHP-SQL/Niveau1/wall.php?user_id=<?php echo ($user['id']) ?>"> <?php echo $user ['alias'] ?> </a>
+                        auxquel est abonnée l'utilisatrice <a href="./wall.php?user_id=<?php echo ($user['id']) ?>"> <?php echo $user ['alias'] ?> </a>
                         (n° <?php echo $userId ?>)
                         </p>
 
@@ -84,7 +84,7 @@
                         <time datetime='2020-02-01 11:12:13' ><?php echo $user['created'] ?></time>
                     </h3>
                         <address>
-                        <a href="http://localhost/Reseau-PHP-SQL/Niveau1/wall.php?user_id=<?php echo ($user['id']) ?>">    
+                        <a href="./wall.php?user_id=<?php echo ($user['id']) ?>">    
                         <?php echo $user['author_name'] ?></address>
                     <div>
                         <p><?php echo $user['content'] ?></p>
