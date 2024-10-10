@@ -8,27 +8,22 @@
     </head>
     <body>
         <?php include 'header.php';
-        render_header() ?>;
+        render_header();
+        echo "FEED"; ?>
+        
         
         <div id="wrapper">
-            <?php
+            <?php $userId = intval($_GET['user_id']); ?>
 
-            $userId = intval($_GET['user_id']);
-            ?>
-            <?php
-            include 'sql_connect.php';
-            connect();
-            ?>
-
+            <?php include 'sql_connect.php';
+            connect(); ?>
+            
             <aside>
                 <?php
                 // Etape 3: récupérer le nom de l'utilisateur
-                
-                $laQuestionEnSql = "SELECT * FROM `users` WHERE id= '$userId' ";
-                $lesInformations = sql_query($laQuestionEnSql);
-                $user = $lesInformations->fetch_assoc();
-                
-                                                
+                    $laQuestionEnSql = "SELECT * FROM `users` WHERE id= '$userId' ";
+                    $lesInformations = sql_query($laQuestionEnSql);
+                    $user = $lesInformations->fetch_assoc();             
                 ?>
 
                 <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
@@ -36,11 +31,10 @@
                     <h3>Présentation</h3>
                         <p>Sur cette page vous trouverez tous les message des utilisatrices
                         auxquel est abonnée l'utilisatrice <a href="./wall.php?user_id=<?php echo ($user['id']) ?>"> <?php echo $user ['alias'] ?> </a>
-                        (n° <?php echo $userId ?>)
-                        </p>
-
+                        (n° <?php echo $userId ?>)</p>
                 </section>
             </aside>
+            
             <main>
                 <?php
                 // Etape 3: récupérer tous les messages des abonnements

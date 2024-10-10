@@ -9,7 +9,7 @@
     <body>
     <?php include 'header.php';
     render_header();
-    ?>;
+    echo "FOLLOWERS"; ?>
     
         <div id="wrapper">          
             <aside>

@@ -7,7 +7,10 @@
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
-    <?php include 'header.php' ?>;
+    <?php include 'header.php';
+    render_header();
+    echo "WALL"; ?>
+
         <div id="wrapper">
             <?php
             //Etape 1: Récupérer l'id de l'utilisateur

@@ -8,7 +8,8 @@
     </head>
     <body>
     <?php include 'header.php';
-    render_header(); ?>;
+    render_header(); 
+    echo "SUBSCRIPTIONS"; ?>
     
         <div id="wrapper">
             <aside>

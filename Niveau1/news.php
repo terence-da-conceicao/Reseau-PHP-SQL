@@ -8,7 +8,8 @@
     </head>
     <body>
     <?php include 'header.php';
-    render_header(); ?>;
+    render_header(); 
+    echo "NEWS";?>
 
         <div id="wrapper">
             <aside>

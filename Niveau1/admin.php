@@ -8,12 +8,12 @@
     </head>
     <body>
         <?php include 'header.php';
-        render_header() ?>;
+        render_header();
+        echo "ADMIN"; ?>
         
-        <?php
-        include 'sql_connect.php';
-        connect();
-        ?>
+        <?php include 'sql_connect.php';
+        connect(); ?>
+
         <div id="wrapper" class='admin'>
             <aside>
                 <h2>Mots-clés</h2>

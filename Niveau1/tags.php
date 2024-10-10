@@ -7,7 +7,9 @@
         <link rel="stylesheet" href="style.css"/>
     </head>
     <body>
-    <?php include 'header.php' ?>;
+    <?php include 'header.php';
+    render_header();
+    echo "TAGS"; ?>
     
         <div id="wrapper">
             <?php

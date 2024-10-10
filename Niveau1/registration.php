@@ -8,7 +8,8 @@
     </head>
     <body>
     <?php include 'header.php';
-    render_header(); ?>;
+    render_header(); 
+    echo "REGISTRATION";?>
 
         <div id="wrapper" >
     <?php bienvenue(); ?>

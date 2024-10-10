@@ -12,7 +12,8 @@ session_start();
     </head>
     <body>
     <?php include 'header.php';
-    render_header(); ?>
+    render_header(); 
+    echo "LOGIN"; ?>
 
         <div id="wrapper" >
     <?php bienvenue(); ?>

@@ -18,9 +18,11 @@
 
     <body>
         <?php include 'header.php';
-        render_header(); ?>;
+        render_header();
+        echo "SETTINGS"; ?>
+
         <?php include 'sql_connect.php'; 
-        connect() ?>;
+        connect(); ?>
 
             <div id="wrapper" class='profile'>
                 <aside>
