@@ -88,6 +88,9 @@
                         <address>
                         <a href="./wall.php?user_id=<?php echo ($user['id']) ?>">    
                         <?php echo $user['author_name'] ?></address>
+                        <a href="http://localhost/Reseau-PHP-SQL/Niveau1/wall.php?user_id=<?php echo ($user['id']) ?>">    
+                        <?php echo $user['author_name'] ?> </a>
+                        </address>
                     <div>
                         <p><?php echo $user['content'] ?></p>
                     </div>                                            
