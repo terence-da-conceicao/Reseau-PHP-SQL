@@ -1,32 +1,29 @@
 <!doctype html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>ReSoC - Mes abonnés </title> 
-        <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
-    </head>
+    <?php 
+        $titre = 'ReSoC - Mes abonné.e.s';
+        include './Assets/includes/header.php';
+        showHead($titre);
+    ?>
+
     <body>
-    <?php include 'header.php' ?>;
+        <?php
+        render_header();
+        echo "FOLLOWERS"; ?>
     
         <div id="wrapper">          
-            <aside>
-                <img src = "user.jpg" alt = "Portrait de l'utilisatrice"/>
-                <section>
-                    <h3>Présentation</h3>
-                    <p>Sur cette page vous trouverez la liste des personnes qui
-                        suivent les messages de l'utilisatrice
-                        n° <?php echo intval($_GET['user_id']) ?></p>
-                </section>
-            </aside>
-
+            <?php 
+                
+                $presentation = "Sur cette page vous trouverez la liste des personnes qui suivent les messages de l'utilisatrice n°".intval($_GET['user_id']);
+                aside($presentation, $userImage, $userImageAlt);
+            ?>
             <main class='contacts'>
                 <?php
                     // Etape 1: récupérer l'id de l'utilisateur
                     $userId = intval($_GET['user_id']);
 
                     // Etape 2: se connecter à la base de donnée
-                    include 'sql_connect.php'; 
+                    include './Assets/includes/sql_connect.php'; 
                     connect();
 
                     // Etape 3: récupérer le nom de l'utilisateur
@@ -48,15 +45,17 @@
                         exit();
                     }
 
-                    include 'generated_url.php';
+                    include './Assets/includes/generated_url.php';
 
                     while ($follower = $lesInformations->fetch_assoc())
                     { 
                         ?>
                         <article>
-                            <img src="user.jpg" alt="blason"/>
+
+                            <img src="./Assets/Images/user.jpg" alt="blason"/>
                             <h3><a href="<?php echo $wallUrl ?>?user_id=<?php echo ($follower['id']) ?>">
-                                <?php echo $follower['alias']?></h3> </a>
+                            <?php echo $follower['alias']?></a></h3>
+
                             <p>id : <?php echo $follower['id']?></p>
                         </article>
                         <?php

@@ -1,18 +1,19 @@
 <!doctype html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>ReSoC - Administration</title> 
-        <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
-    </head>
+    <?php 
+        $titre = 'ReSoC - Administration';
+        include './Assets/includes/header.php';
+        showHead($titre);
+    ?>
+
     <body>
-        <?php include 'header.php' ?>;
-        
         <?php
-        include 'sql_connect.php';
-        connect();
-        ?>
+        render_header();
+        echo "ADMIN"; ?>
+        
+        <?php include './Assets/includes/sql_connect.php';
+        connect(); ?>
+
         <div id="wrapper" class='admin'>
             <aside>
                 <h2>Mots-clés</h2>
@@ -62,7 +63,7 @@
                 // Etape 5 : @todo : Afficher les utilisatrices 
                 while ($users = $lesInformations->fetch_assoc())
                 {
-                    include 'generated_url.php'
+                    include './Assets/includes/generated_url.php';
                     
                     ?>
                     <article>

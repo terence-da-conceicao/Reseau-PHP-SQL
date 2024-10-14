@@ -1,74 +1,64 @@
-<?php
-session_start();
-?>
+<?php session_start(); ?>
 
 <!doctype html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>ReSoC - Flux</title>         
-        <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
-    </head>
+    <?php 
+        $titre = 'ReSoC - Login';
+        include './Assets/includes/header.php';
+        showHead($titre); ?>
+
     <body>
-    <?php include 'header.php' ?>;
+        <?php 
+            render_header(); 
+            echo "LOGIN"; ?>
 
         <div id="wrapper" >
-            <aside>
-                <h2>Présentation</h2>
-                <p>Bienvenue sur notre réseau social.</p>
-            </aside>
+            <?php bienvenue(); ?>
+            
             <main>
                 <article>
                     <h2>Connexion</h2>
+
                     <?php
-                    
-                    
-
                     $enCoursDeTraitement = isset($_POST['email']);
-                    if ($enCoursDeTraitement)
-                    {
-                        $emailAVerifier = $_POST['email'];
-                        $passwdAVerifier = $_POST['motpasse'];
+                        if ($enCoursDeTraitement) {
+                            $emailAVerifier = $_POST['email'];
+                            $passwdAVerifier = $_POST['motpasse'];
 
-                        $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
-                        
-                        $emailAVerifier = $mysqli->real_escape_string($emailAVerifier);
-                        $passwdAVerifier = $mysqli->real_escape_string($passwdAVerifier);
-                        
-                        $passwdAVerifier = md5($passwdAVerifier);
-                        //tous les mdp sont "test" ,cryptés en 098f6bcd4621d373cade4e832627b4f6
-                        //le mdp de tata est "bonjour", crypté en f02368945726d5fc2a14eb576f7276c0
+                            $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
+                            
+                            $emailAVerifier = $mysqli->real_escape_string($emailAVerifier);
+                            $passwdAVerifier = $mysqli->real_escape_string($passwdAVerifier);
+                            
+                            $passwdAVerifier = md5($passwdAVerifier);
+                            //tous les mdp sont "test" ,cryptés en 098f6bcd4621d373cade4e832627b4f6
+                            //le mdp de tata est "bonjour", crypté en f02368945726d5fc2a14eb576f7276c0
 
-                        $lInstructionSql = "
-                        SELECT * 
-                        FROM users 
-                        WHERE email 
-                        LIKE '$emailAVerifier' ";
-                        
-
-                        $res = $mysqli->query($lInstructionSql);
-                        $user = $res->fetch_assoc();
-                        
-                        if (!$user OR ($user['password']) != $passwdAVerifier)
-                        {
-                            echo "La connexion a échoué. ";
-                            echo "     bdd: ";
-                            echo
-                            print_r($user['password']);
-                            echo "    post: ";
-                            print_r($passwdAVerifier);
+                            $lInstructionSql = "
+                            SELECT * 
+                            FROM users 
+                            WHERE email 
+                            LIKE '$emailAVerifier' ";
                             
 
+                            $res = $mysqli->query($lInstructionSql);
+                            $user = $res->fetch_assoc();
                             
-                        } else
-                        {
-                            echo "Votre connexion est un succès : " . $user['alias'] . ".";
-                            // Etape 7 : Se souvenir que l'utilisateur s'est connecté pour la suite
-                            // documentation: https://www.php.net/manual/fr/session.examples.basic.php
-                            $_SESSION['connected_id']=$user['id'];
+                            if (!$user OR ($user['password']) != $passwdAVerifier) {
+                                echo "La connexion a échoué. ";
+                                echo "     bdd: ";
+                                echo
+                                print_r($user['password']);
+                                echo "    post: ";
+                                print_r($passwdAVerifier);
+
+                            } else {
+                                echo "Votre connexion est un succès : " . $user['alias'] . ".";
+                                // Etape 7 : Se souvenir que l'utilisateur s'est connecté pour la suite
+                                // documentation: https://www.php.net/manual/fr/session.examples.basic.php
+                                $_SESSION['connected_id']=$user['id'];
+                            }
                         }
-                    }
                     ?>                     
                     <form action="login.php" method="post">
                         <!--<input type='hidden'name='form_id' value='achanger'>-->
@@ -84,8 +74,8 @@ session_start();
                         Pas de compte?
                         <a href='registration.php'>Inscrivez-vous.</a>
                     </p>
-
                 </article>
+
             </main>
         </div>
     </body>

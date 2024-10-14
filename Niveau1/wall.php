@@ -1,13 +1,15 @@
 <!doctype html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>ReSoC - Mur</title> 
-        <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
-    </head>
+    <?php 
+        $titre = 'Mur';
+        include './Assets/includes/header.php';
+        showHead($titre);
+    ?>
     <body>
-    <?php include 'header.php' ?>;
+    <?php
+        render_header();
+        echo "WALL"; ?>
+
         <div id="wrapper">
             <?php
             //Etape 1: Récupérer l'id de l'utilisateur
@@ -17,7 +19,7 @@
             
             <?php
             // Etape 2: se connecter à la base de donnée
-            include 'sql_connect.php';
+            include './Assets/includes/sql_connect.php';
             connect();
             ?>
 
@@ -29,7 +31,7 @@
                 $user = $lesInformations->fetch_assoc();
                 ?>
 
-                <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
+                <img src="./Assets/Images/user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
                         <p>Sur cette page vous trouverez tous les message de l'utilisatrice : <?php echo $user['alias'] ?>
@@ -60,9 +62,10 @@
 
                 // Etape 5: Parcourir les messsages et remplir le HTML
                 while ($post = $lesInformations->fetch_assoc())
+
                 {
 
-                include 'generated_url.php';
+                include './Assets/includes/generated_url.php';
                 $tag_list = explode(",", $post['taglist']);
 
                 ?>
@@ -79,7 +82,7 @@
                         </div>                                            
                         <footer>
                             <small>♥ <?php echo $post['like_number'] ?></small>
-                            <a href="TBD">#<?php echo $post['taglist'] ?></a>
+                            <a href="./tags.php?tag_id=">#<?php echo $post['taglist'] ?></a>
                         </footer>
                     </article>
                 <?php

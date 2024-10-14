@@ -1,53 +1,35 @@
 <!doctype html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>ReSoC - Flux</title>         
-        <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
-    </head>
+    <?php 
+        $titre = 'ReSoC - Flux';
+        include './Assets/includes/header.php';
+        showHead($titre);
+    ?>
     <body>
-        <?php include 'header.php' ?>;
+        <?php
+        render_header();
+        echo "FEED"; ?>
+        
         
         <div id="wrapper">
-            <?php
-            /**
-             * Cette page est TRES similaire à wall.php. 
-             * Vous avez sensiblement à y faire la meme chose.
-             * Il y a un seul point qui change c'est la requete sql.
-             */
-            /**
-             * Etape 1: Le mur concerne un utilisateur en particulier
-             */
-            // Etape 1: Le mur concerne un utilisateur en particulier
-            $userId = intval($_GET['user_id']);
-            ?>
-            <?php
-            include 'sql_connect.php';
-            connect();
-            ?>
+            <?php $userId = intval($_GET['user_id']); ?>
 
-            <aside>
-                <?php
-                // Etape 3: récupérer le nom de l'utilisateur
-                
-                $laQuestionEnSql = "SELECT * FROM `users` WHERE id= '$userId' ";
+            <?php include './Assets/includes/sql_connect.php';
+            connect(); ?>
+            
+            <?php
+                $laQuestionEnSql = "
+                SELECT * FROM `users` WHERE id= '$userId' 
+                ";
                 $lesInformations = sql_query($laQuestionEnSql);
-                $user = $lesInformations->fetch_assoc();
-                
-                                                
-                ?>
+                $user = $lesInformations->fetch_assoc();             
+            ?>
 
-                <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
-                <section>
-                    <h3>Présentation</h3>
-                        <p>Sur cette page vous trouverez tous les message des utilisatrices
-                        auxquel est abonnée l'utilisatrice <a href="./wall.php?user_id=<?php echo ($user['id']) ?>"> <?php echo $user ['alias'] ?> </a>
-                        (n° <?php echo $userId ?>)
-                        </p>
+            <?php 
+                $presentation = "Sur cette page vous trouverez tous les messages des utilisatrices auxquelles est abonnée l'utilisatrice n°".$user['id']." dont le nom est ".$user['alias']; 
+                aside($presentation, $userImage, $userImageAlt);
+            ?>
 
-                </section>
-            </aside>
             <main>
                 <?php
                 // Etape 3: récupérer tous les messages des abonnements
@@ -80,7 +62,7 @@
                 while ($user = $lesInformations->fetch_assoc())
                 {
 
-                include 'generated_url.php';
+                include './Assets/includes/generated_url.php';
 
                 ?>
                                 
@@ -96,7 +78,7 @@
                     </div>                                            
                     <footer>
                         <small>♥ <?php echo $user['like_number'] ?></small>
-                        <a href=""><?php echo $user['taglist'] ?></a>
+                        <a href="./tags.php?tag_id="><?php echo $user['taglist'] ?></a>
                     </footer>
                 </article>
                 <?php
