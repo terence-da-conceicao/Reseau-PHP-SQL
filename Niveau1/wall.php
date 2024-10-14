@@ -60,10 +60,10 @@
 
                 // Etape 5: Parcourir les messsages et remplir le HTML
                 while ($post = $lesInformations->fetch_assoc())
-
                 {
 
                 include 'generated_url.php';
+                $tag_list = explode(",", $post['taglist']);
 
                 ?>
 
