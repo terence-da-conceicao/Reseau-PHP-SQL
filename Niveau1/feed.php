@@ -17,22 +17,18 @@
             <?php include './Assets/includes/sql_connect.php';
             connect(); ?>
             
-            <aside>
-                <?php
-                // Etape 3: récupérer le nom de l'utilisateur
-                    $laQuestionEnSql = "SELECT * FROM `users` WHERE id= '$userId' ";
-                    $lesInformations = sql_query($laQuestionEnSql);
-                    $user = $lesInformations->fetch_assoc();             
-                ?>
+            <?php
+                $laQuestionEnSql = "
+                SELECT * FROM `users` WHERE id= '$userId' 
+                ";
+                $lesInformations = sql_query($laQuestionEnSql);
+                $user = $lesInformations->fetch_assoc();             
+            ?>
 
-                <img src="./Assets/Images/user.jpg" alt="Portrait de l'utilisatrice"/>
-                <section>
-                    <h3>Présentation</h3>
-                        <p>Sur cette page vous trouverez tous les message des utilisatrices
-                        auxquel est abonnée l'utilisatrice <a href="./wall.php?user_id=<?php echo ($user['id']) ?>"> <?php echo $user ['alias'] ?> </a>
-                        (n° <?php echo $userId ?>)</p>
-                </section>
-            </aside>
+            <?php 
+                $presentation = "Sur cette page vous trouverez tous les messages des utilisatrices auxquelles est abonnée l'utilisatrice n°".$user['id']." dont le nom est ".$user['alias']; 
+                aside($presentation, $userImage, $userImageAlt);
+            ?>
 
             <main>
                 <?php

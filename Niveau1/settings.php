@@ -23,14 +23,11 @@
         connect(); ?>
 
             <div id="wrapper" class='profile'>
-                <aside>
-                    <img src="./Assets/Images/user.jpg" alt="Portrait de l'utilisatrice"/>
-                    <section>
-                        <h3>Présentation</h3>
-                        <p>Sur cette page vous trouverez les informations de l'utilisatrice
-                            n° <?php echo intval($_GET['user_id']) ?></p>
-                    </section>
-                </aside>
+                <?php
+                    $presentation ="Sur cette page vous trouverez les informations de l'utilisatrice n° ".intval($_GET['user_id']);
+                    aside($presentation, $userImage, $userImageAlt); ?>
+                
+                    
                 <main>
 
                 <?php

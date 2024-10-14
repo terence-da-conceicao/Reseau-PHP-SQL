@@ -29,7 +29,7 @@ session_start();
                     /**
                      * BD
                      */
-                    $mysqli = new mysqli("localhost", "root", "root", "socialnetwork_tests");
+                    $mysqli = new mysqli("localhost", "root", "", "socialnetwork");
                     /**
                      * Récupération de la liste des auteurs
                      */

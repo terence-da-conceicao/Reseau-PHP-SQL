@@ -3,19 +3,16 @@
     <?php 
         $titre = 'ReSoC - Inscription';
         include './Assets/includes/header.php';
-        showHead($titre);
-    ?>
+        showHead($titre); ?>
 
     <body>
         <?php
         render_header(); 
         echo "REGISTRATION"; ?>
 
-
-
 <!--est-ce qu'on ajoute le php include sql_connect.php? -->
         <div id="wrapper" >
-        <?php bienvenue(); ?>
+        <?php bienvenue(); ?> 
                 <main>
                     <article>
                         <h2>Inscription</h2>

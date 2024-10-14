@@ -45,6 +45,21 @@ function render_header() {
 }
 ?>
 
+<?php $userImage = "./Assets/Images/user.jpg" ?>
+<?php $userImageAlt = "Portrait de l'utilisatrice" ?>
+
+<?php 
+    function aside($presentation, $image, $alt) {
+        echo
+            '<aside>
+                <img src = "'.htmlSpecialChars($image).'"alt = "'.htmlSpecialChars($alt).'" />
+                <section>
+                    <h3>Présentation</h3>
+                    <p>'.htmlSpecialChars($presentation).'</p>
+                </section>
+            </aside>';
+    }        
+?>
 
 <?php 
 function bienvenue() {

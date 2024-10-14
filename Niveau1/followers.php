@@ -7,21 +7,16 @@
     ?>
 
     <body>
-    <?php
-    render_header();
-    echo "FOLLOWERS"; ?>
+        <?php
+        render_header();
+        echo "FOLLOWERS"; ?>
     
         <div id="wrapper">          
-            <aside>
-                <img src = "./Assets/Images/user.jpg" alt = "Portrait de l'utilisatrice"/>
-                <section>
-                    <h3>Présentation</h3>
-                    <p>Sur cette page vous trouverez la liste des personnes qui
-                        suivent les messages de l'utilisatrice
-                        n° <?php echo intval($_GET['user_id']) ?></p>
-                </section>
-            </aside>
-
+            <?php 
+                
+                $presentation = "Sur cette page vous trouverez la liste des personnes qui suivent les messages de l'utilisatrice n°".intval($_GET['user_id']);
+                aside($presentation, $userImage, $userImageAlt);
+            ?>
             <main class='contacts'>
                 <?php
                     // Etape 1: récupérer l'id de l'utilisateur
