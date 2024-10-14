@@ -66,6 +66,7 @@
                 {
 
                 include './Assets/includes/generated_url.php';
+                $tag_list = explode(",", $post['taglist']);
 
                 ?>
 
