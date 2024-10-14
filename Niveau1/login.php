@@ -30,7 +30,7 @@
                             $emailAVerifier = $mysqli->real_escape_string($emailAVerifier);
                             $passwdAVerifier = $mysqli->real_escape_string($passwdAVerifier);
                             
-                            //$passwdAVerifier = md5($passwdAVerifier);
+                            $passwdAVerifier = md5($passwdAVerifier);
                             //tous les mdp sont "test" ,cryptés en 098f6bcd4621d373cade4e832627b4f6
                             //le mdp de tata est "bonjour", crypté en f02368945726d5fc2a14eb576f7276c0
 

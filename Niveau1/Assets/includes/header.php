@@ -16,12 +16,6 @@ function render_header() {
     echo
     '<!doctype html>
         <html lang="fr">
-            <head>
-                <meta charset="utf-8">
-                <title>ReSoC - Administration</title> 
-                <meta name="author" content="Julien Falconnet">
-                <link rel="stylesheet" href="./Assets/CSS/style.css"/>
-            </head>
             <body>
                 <header>
                     <img src="./Assets/Images/resoc.jpg" alt="Logo de notre réseau social"/>

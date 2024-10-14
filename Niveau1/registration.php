@@ -23,11 +23,7 @@
                     // Etape 1 : vérifier si on est en train d'afficher ou de traiter le formulaire
                     // si on recoit un champs email rempli il y a une chance que ce soit un traitement
                     $enCoursDeTraitement = isset($_POST['email']);
-                    if ($enCoursDeTraitement)
-                    {
-                        // on ne fait ce qui suit que si un formulaire a été soumis.
-                        // Etape 2: récupérer ce qu'il y a dans le formulaire @todo: c'est là que votre travaille se situe
-                        // observez le résultat de cette ligne de débug (vous l'effacerez ensuite)
+                    if ($enCoursDeTraitement) {
                         echo "<pre>" . print_r($_POST, 1) . "</pre>";
                         // et complétez le code ci dessous en remplaçant les ???
                         $new_email = $_POST['???'];
