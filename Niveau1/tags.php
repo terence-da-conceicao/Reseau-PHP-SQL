@@ -54,7 +54,8 @@
                 $laQuestionEnSql = "
                     SELECT posts.content,
                     posts.created,
-                    users.alias as author_name,  
+                    users.alias as author_name,
+                    users.id,  
                     count(likes.id) as like_number,  
                     tags.label AS onetag,
                     GROUP_CONCAT(DISTINCT tags.label) AS taglist 
@@ -76,6 +77,8 @@
                     echo("Échec de la requete : " . $mysqli->error);
                 }
 
+                include 'generated_url.php';
+
                 // Etape 4: Parcourir les messsages et remplir le HTML
                 while ($post = $lesInformations->fetch_assoc())
                 {
@@ -85,7 +88,9 @@
                         <h3>
                             <time datetime='2020-02-01 11:12:13' ><?php echo $post['created'] ?></time>
                         </h3>
-                            <address>par <?php echo $post['author_name'] ?></address>
+                            <address> <a href="<?php echo $wallUrl ?>?user_id=<?php echo $post['id'] ?>">
+                            par <?php echo $post['author_name'] ?> </a>
+                            </address>
                         <div>
                             <p><?php echo $post['content'] ?></p>
                         </div>                                            

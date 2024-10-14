@@ -63,10 +63,13 @@
                 // Etape 5 : @todo : Afficher les utilisatrices 
                 while ($users = $lesInformations->fetch_assoc())
                 {
+                    include 'generated_url.php'
                     
                     ?>
                     <article>
-                        <h3><?php echo $users['alias'] ?></h3>
+                            <h3> <a href="<?php echo $wallUrl ?>?user_id=<?php echo ($users['id']) ?>">
+                            <?php echo $users['alias'] ?> </a>
+                            </h3>
                             <p>id: <?php echo $users['id'] ?></p>
                             <nav>
                                 <a href="wall.php?user_id=<?php echo $users['id'] ?>">Mur</a>

@@ -62,21 +62,26 @@
 
                 // Etape 5: Parcourir les messsages et remplir le HTML
                 while ($post = $lesInformations->fetch_assoc())
+
                 {
+
+                include 'generated_url.php';
+
                 ?>
 
                     <article>
                         <h3>
                             <time><?php echo $post['created'] ?></time>
                         </h3>
-                            <address>par <?php echo $user['alias'] ?></address>
-                            <address><a href="http://localhost/ProjetRS/Reseau-PHP-SQL/Niveau1/wall.php?user_id=<?php echo $userId ?>"> par <?php echo $user['alias'] ?></a></address>
+                            <address> <a href="<?php echo $wallUrl ?>?user_id=<?php echo $userId ?>"> 
+                            par <?php echo $user['alias'] ?></a>
+                            </address>
                         <div>
                             <p><?php echo $post['content'] ?></p>
                         </div>                                            
                         <footer>
                             <small>♥ <?php echo $post['like_number'] ?></small>
-                            <a href="">#<?php echo $post['taglist'] ?></a>
+                            <a href="TBD">#<?php echo $post['taglist'] ?></a>
                         </footer>
                     </article>
                 <?php
