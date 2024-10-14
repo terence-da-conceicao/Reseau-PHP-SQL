@@ -45,7 +45,7 @@
                         exit();
                     }
 
-                    include 'generated_url.php';
+                    include './Assets/includes/generated_url.php';
 
                     while ($follower = $lesInformations->fetch_assoc())
                     { 
