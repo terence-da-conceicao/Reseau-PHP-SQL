@@ -4,14 +4,16 @@ session_start();
 
 <!doctype html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>ReSoC - Post d'usurpateur</title> 
-        <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
-    </head>
+    <?php 
+        $titre = "Post d'usurpateur";
+        include './Assets/includes/header.php';
+        showHead($titre);
+    ?>
+
     <body>
-    <?php include 'header.php' ?>;
+    <?php
+        render_header();
+        echo "USURPEDPOST"; ?>
 
         <div id="wrapper" >
 

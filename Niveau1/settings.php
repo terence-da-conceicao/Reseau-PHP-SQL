@@ -1,5 +1,10 @@
 <!doctype html>
 <html lang="fr">
+    <?php 
+        $titre = 'ReSoC - Paramètres';
+        include './Assets/includes/header.php';
+        showHead($titre);
+    ?>
 
     <?php 
         if (isset($_GET['user_id'])) {
@@ -9,27 +14,20 @@
         } 
     ?>
 
-    <head>
-        <meta charset="utf-8">
-        <title>ReSoC - Paramètres</title> 
-        <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
-    </head>
-
     <body>
-        <?php include 'header.php' ?>;
-        <?php include 'sql_connect.php'; 
-        connect() ?>;
+        <?php
+        render_header();
+        echo "SETTINGS"; ?>
+
+        <?php include './Assets/includes/sql_connect.php'; 
+        connect(); ?>
 
             <div id="wrapper" class='profile'>
-                <aside>
-                    <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
-                    <section>
-                        <h3>Présentation</h3>
-                        <p>Sur cette page vous trouverez les informations de l'utilisatrice
-                            n° <?php echo intval($_GET['user_id']) ?></p>
-                    </section>
-                </aside>
+                <?php
+                    $presentation ="Sur cette page vous trouverez les informations de l'utilisatrice n° ".intval($_GET['user_id']);
+                    aside($presentation, $userImage, $userImageAlt); ?>
+                
+                    
                 <main>
 
                 <?php

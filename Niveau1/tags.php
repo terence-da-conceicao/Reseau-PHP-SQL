@@ -1,13 +1,15 @@
 <!doctype html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>ReSoC - Les message par mot-clé</title> 
-        <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
-    </head>
+    <?php 
+        $titre = 'Messages par mots-clés';
+        include './Assets/includes/header.php';
+        showHead($titre);
+    ?>
+
     <body>
-    <?php include 'header.php' ?>;
+    <?php
+        render_header();
+        echo "TAGS"; ?>
     
         <div id="wrapper">
             <?php
@@ -24,7 +26,7 @@
             /**
              * Etape 2: se connecter à la base de donnée
              */
-            include 'sql_connect.php';
+            include './Assets/includes/sql_connect.php';
             connect();
             ?>
 
@@ -36,7 +38,7 @@
                 $tag = $lesInformations->fetch_assoc();
                 ?>
 
-                <img src="user.jpg" alt="Portrait de l'utilisatrice"/>
+                <img src="./Assets/Images/user.jpg" alt="Portrait de l'utilisatrice"/>
                 <section>
                     <h3>Présentation</h3>
                         <p>Sur cette page vous trouverez les derniers messages comportant
@@ -55,8 +57,11 @@
                     users.alias as author_name,
                     users.id,  
                     count(likes.id) as like_number,  
+                    tags.label AS onetag,
                     GROUP_CONCAT(DISTINCT tags.label) AS taglist 
-                    FROM posts_tags as filter 
+
+                    FROM posts_tags as filter
+
                     JOIN posts ON posts.id=filter.post_id
                     JOIN users ON users.id=posts.user_id
                     LEFT JOIN posts_tags ON posts.id = posts_tags.post_id  

@@ -1,24 +1,22 @@
 <!doctype html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <title>ReSoC - Inscription</title> 
-        <meta name="author" content="Julien Falconnet">
-        <link rel="stylesheet" href="style.css"/>
-    </head>
+    <?php 
+        $titre = 'ReSoC - Inscription';
+        include './Assets/includes/header.php';
+        showHead($titre); ?>
+
     <body>
-    <?php include 'header.php' ?>;
+        <?php
+        render_header(); 
+        echo "REGISTRATION"; ?>
 
+<!--est-ce qu'on ajoute le php include sql_connect.php? -->
         <div id="wrapper" >
-
-            <aside>
-                <h2>Présentation</h2>
-                <p>Bienvenu sur notre réseau social.</p>
-            </aside>
-            <main>
-                <article>
-                    <h2>Inscription</h2>
-                    <?php
+        <?php bienvenue(); ?> 
+                <main>
+                    <article>
+                        <h2>Inscription</h2>
+                        <?php
                     /**
                      * TRAITEMENT DU FORMULAIRE
                      */
