@@ -61,6 +61,9 @@ function bienvenue() {
         '<aside>
             <h2>Présentation</h2>
             <p>Bienvenue sur notre réseau social.</p>
+
+            <p>En vous inscrivant sur notre site, vous fournissez les informations personnelles suivantes : 
+                email, pseudonyme, mot de passe, posts, personnes qui vous suivez, personnes qui vous suivent.</p>
         </aside>';
 }
 ?>
