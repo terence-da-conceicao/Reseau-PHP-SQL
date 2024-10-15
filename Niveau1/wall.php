@@ -40,11 +40,29 @@
                 </section>
             </aside>
             <main> 
+                <form method=POST>
+                    <label for="new_post">Nouveau message</label><br>
+                    <textarea name="new_post" rows=7 columns=90 label="new_message">Rédigez un nouveau message</textarea><br>
+                    <label for="choose_tags">Ajoutez des mots-clés</label><br>
+                    <select name="choose_tags" multiple>
+                        <option value="">--Choisissez un ou plusieurs tags--</option>
+                        <?php 
+                        $query_tags = "
+                        SELECT * FROM tags
+                        ";
+                        $result = $mysqli -> query ($query_tags);
+                        while ($options = mysqli_fetch_array($result)) {
+                            echo "<option value='" . $options['id'] . "'>" . $options['label'] . "</option>";
+                        }
+                        ?>
+                    </select><br>
+                    <input type="submit" value="Publiez" /><br>
+                </form>
                 <?php
                 // Etape 4: récupérer tous les messages de l'utilisatrice
                 $laQuestionEnSql = "
                     SELECT posts.content, posts.created, users.alias as author_name, 
-                    COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist,
+                    COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label ORDER BY tags.id) AS taglist,
                     GROUP_CONCAT(DISTINCT tags.id) AS idlist 
                     FROM posts
                     JOIN users ON  users.id=posts.user_id
@@ -89,7 +107,7 @@
                             <?php 
                             foreach ($tag_id_list as $key => $data)
                             { ?>
-                            <a href="./tags.php?tag_id=<?php echo $key?>">#<?php echo $data ?></a>
+                            <a href="./tags.php?tag_id=<?php echo $key?>">#<?php echo $data?></a>
                             <?php
                             }
                             ?>

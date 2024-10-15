@@ -58,7 +58,7 @@
                     users.id,  
                     count(likes.id) as like_number,  
                     tags.label AS onetag,
-                    GROUP_CONCAT(DISTINCT tags.label) AS taglist,
+                    GROUP_CONCAT(DISTINCT tags.label ORDER BY tags.id) AS taglist,
                     GROUP_CONCAT(DISTINCT tags.id) AS idlist 
 
                     FROM posts_tags as filter
