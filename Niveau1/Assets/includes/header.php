@@ -1,4 +1,5 @@
 
+<!--méta-données-->
 <?php 
 function showHead($titre) {
        echo 
@@ -11,6 +12,8 @@ function showHead($titre) {
 }
 ?>
 
+
+<!--bandeau avec le menu-->
 <?php 
 function render_header() {
     echo
@@ -39,6 +42,7 @@ function render_header() {
 }
 ?>
 
+<!--Encart sur le côté gauche : photo du user, présentation de la page-->
 <?php $userImage = "./Assets/Images/user.jpg" ?>
 <?php $userImageAlt = "Portrait de l'utilisatrice" ?>
 
@@ -51,9 +55,13 @@ function render_header() {
                     <h3>Présentation</h3>
                     <p>'.htmlSpecialChars($presentation).'</p>
                 </section>
-            </aside>';
+            </aside>';   
+
     }        
 ?>
+
+
+
 
 <?php 
 function bienvenue() {

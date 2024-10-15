@@ -1,3 +1,5 @@
+
+
 <!doctype html>
 <html lang="fr">
     <?php 
@@ -13,14 +15,21 @@
     
         <div id="wrapper">          
             <?php 
-                
+
+                $userId = intval($_GET['user_id']);
+
+
                 $presentation = "Sur cette page vous trouverez la liste des personnes qui suivent les messages de l'utilisatrice n°".intval($_GET['user_id']);
                 aside($presentation, $userImage, $userImageAlt);
             ?>
+
             <main class='contacts'>
                 <?php
+
+
+
                     // Etape 1: récupérer l'id de l'utilisateur
-                    $userId = intval($_GET['user_id']);
+                    //$userId = intval($_GET['user_id']);
 
                     // Etape 2: se connecter à la base de donnée
                     include './Assets/includes/sql_connect.php'; 

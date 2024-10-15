@@ -1,3 +1,7 @@
+<?php 
+    setcookie('id_utilisateur', '152');
+?>
+
 <!doctype html>
 <html lang="fr">
     <?php 
@@ -79,9 +83,6 @@
                                     $showDispoAlias = true;
                                 }
                             }
-
-                            
-
 
                         //On indique que les conditions d'inscriptions sont ok
                         if ($showDispoEmail === true && $showDispoAlias === true) {
