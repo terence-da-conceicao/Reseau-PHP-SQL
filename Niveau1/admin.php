@@ -63,7 +63,7 @@
                 // Etape 5 : @todo : Afficher les utilisatrices 
                 while ($users = $lesInformations->fetch_assoc())
                 {
-                    include 'generated_url.php'
+                    include './Assets/includes/generated_url.php';
                     
                     ?>
                     <article>

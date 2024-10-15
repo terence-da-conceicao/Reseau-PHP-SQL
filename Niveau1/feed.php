@@ -62,7 +62,7 @@
                 while ($user = $lesInformations->fetch_assoc())
                 {
 
-                include 'generated_url.php';
+                include './Assets/includes/generated_url.php';
 
                 ?>
                                 
@@ -78,7 +78,7 @@
                     </div>                                            
                     <footer>
                         <small>♥ <?php echo $user['like_number'] ?></small>
-                        <a href=""><?php echo $user['taglist'] ?></a>
+                        <a href="./tags.php?tag_id="><?php echo $user['taglist'] ?></a>
                     </footer>
                 </article>
                 <?php

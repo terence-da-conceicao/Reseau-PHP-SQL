@@ -76,6 +76,8 @@
                     echo("Échec de la requete : " . $mysqli->error);
                 }
 
+                include './Assets/includes/generated_url.php';
+
                 // Etape 4: Parcourir les messsages et remplir le HTML
                 while ($post = $lesInformations->fetch_assoc())
                 {
@@ -91,7 +93,7 @@
                         </div>                                            
                         <footer>
                             <small>♥ <?php echo $post['like_number'] ?></small>
-                            <a href="">#<?php echo $post['taglist'] ?></a>
+                            <a href="./tags.php?tag_id=">#<?php echo $post['taglist'] ?></a>
                         </footer>
                     </article>
                 <?php
