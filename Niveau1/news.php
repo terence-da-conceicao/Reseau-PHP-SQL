@@ -28,7 +28,8 @@
                         users.alias as author_name,  
                         users.id,
                         count(likes.id) as like_number,  
-                        GROUP_CONCAT(DISTINCT tags.label) AS taglist 
+                        GROUP_CONCAT(DISTINCT tags.label) AS taglist,
+                        GROUP_CONCAT(DISTINCT tags.id) AS idlist 
                         FROM posts
                         JOIN users ON  users.id=posts.user_id
                         LEFT JOIN posts_tags ON posts.id = posts_tags.post_id  
@@ -48,12 +49,17 @@
                     exit();
                 }
 
-                include './Assets/includes/generated_url.php';
+                
 
                 // Etape 3: Parcourir ces données et les ranger bien comme il faut dans du html
                 // NB: à chaque tour du while, la variable post ci dessous reçois les informations du post suivant.
                 while ($post = $lesInformations->fetch_assoc())
                 {
+                    include './Assets/includes/generated_url.php';
+                    $tag_list = explode(",", $post['taglist']);
+                    $id_list = explode(",", $post['idlist']);
+                    $tag_id_list = array_combine ($id_list, $tag_list);
+
                     //la ligne ci-dessous doit etre supprimée mais regardez ce 
                     //qu'elle affiche avant pour comprendre comment sont organisées les information dans votre 
                     //echo "<pre>" . print_r($post, 1) . "</pre>";
@@ -75,7 +81,11 @@
                         </div>
                         <footer>
                             <small>♥ <?php echo $post['like_number'] ?></small>
-                            <a href="./tags.php?tag_id="><?php echo $post['taglist'] ?></a>
+                            <?php 
+                            foreach ($tag_id_list as $key => $data)
+                            { ?>
+                            <a href="./tags.php?tag_id=<?php echo $key?>">#<?php echo $data?></a>
+                            <?php } ?>
                         </footer>
                     </article>
                 <?php
