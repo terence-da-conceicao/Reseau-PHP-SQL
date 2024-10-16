@@ -40,6 +40,7 @@
                 </section>
             </aside>
             <main> 
+                <!-- formulaire pour nouveau message + tableau tags -->
                 <form method=POST>
                     <label for="new_post">Nouveau message</label><br>
                     <textarea name="new_post" rows=8 style="width: 55%; font-family: Arial" label="new_message">Rédigez un nouveau message</textarea><br>
@@ -115,10 +116,7 @@
                 $tag_list = explode(",", $post['taglist']);
                 $id_list = explode(",", $post['idlist']);
                 $tag_id_list = array_combine ($id_list, $tag_list);
-                $arr = array_values($tag_list);
-              
-                print_r (sort($arr));
-
+                
                 ?>
 
                     <article>
