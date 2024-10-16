@@ -41,6 +41,7 @@
                 </section>
             </aside>
             <main> 
+                <!-- formulaire pour nouveau message + tableau tags -->
                 <form method=POST>
                     <label for="new_post">Nouveau message</label><br>
                     <textarea name="new_post" rows=8 style="width: 55%; font-family: Arial" label="new_message">Rédigez un nouveau message</textarea><br>
@@ -116,10 +117,7 @@
                 $tag_list = explode(",", $post['taglist']);
                 $id_list = explode(",", $post['idlist']);
                 $tag_id_list = array_combine ($id_list, $tag_list);
-                $arr = array_values($tag_list);
-              
-                print_r (sort($arr));
-
+                
                 ?>
 
                     <article>
@@ -127,7 +125,7 @@
                             <time><?php echo $post['created'] ?></time>
                         </h3>
                             
-                            <address><a href="http://localhost/ProjetRS/Reseau-PHP-SQL/Niveau1/wall.php?user_id=<?php echo $userId ?>"> par <?php echo $user['alias'] ?></a></address>
+                            <address><a href="<?php echo $wallUrl ?>?user_id=<?php echo $userId ?>"> par <?php echo $user['alias'] ?></a></address>
                         <div>
                             <p><?php echo $post['content'] ?></p>
                         </div>                                            

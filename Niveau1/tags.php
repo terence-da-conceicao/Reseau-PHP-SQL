@@ -57,8 +57,9 @@
                     users.alias as author_name,  
                     count(likes.id) as like_number,  
                     tags.label AS onetag,
-                    GROUP_CONCAT(DISTINCT tags.label ORDER BY tags.id) AS taglist,
-                    GROUP_CONCAT(DISTINCT tags.id) AS idlist 
+                    users.id AS user_id,
+                    GROUP_CONCAT(DISTINCT tags.label) AS taglist,
+                    GROUP_CONCAT(DISTINCT tags.id  ORDER BY tags.label) AS idlist 
 
                     FROM posts_tags as filter
 
@@ -92,7 +93,7 @@
                         <h3>
                             <time datetime='2020-02-01 11:12:13' ><?php echo $post['created'] ?></time>
                         </h3>
-                            <address>par <?php echo $post['author_name'] ?></address>
+                            <address><a href="<?php echo $wallUrl ?>?user_id=<?php echo $post['user_id'] ?>">par <?php echo $post['author_name'] ?></address></a>
                         <div>
                             <p><?php echo $post['content'] ?></p>
                         </div>                                            
