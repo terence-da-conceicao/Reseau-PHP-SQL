@@ -37,6 +37,7 @@
                         <p>Sur cette page vous trouverez tous les message de l'utilisatrice : <?php echo $user['alias'] ?>
                         (n° <?php echo $userId ?>)
                         </p>
+                        <button>S'abonner</button>
                 </section>
             </aside>
             <main> 
@@ -123,9 +124,8 @@
                         <h3>
                             <time><?php echo $post['created'] ?></time>
                         </h3>
-                            <address> <a href="<?php echo $wallUrl ?>?user_id=<?php echo $userId ?>"> 
-                            par <?php echo $user['alias'] ?></a>
-                            </address>
+                            
+                            <address><a href="http://localhost/ProjetRS/Reseau-PHP-SQL/Niveau1/wall.php?user_id=<?php echo $userId ?>"> par <?php echo $user['alias'] ?></a></address>
                         <div>
                             <p><?php echo $post['content'] ?></p>
                         </div>                                            
