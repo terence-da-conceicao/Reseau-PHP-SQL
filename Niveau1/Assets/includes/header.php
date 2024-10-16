@@ -39,7 +39,7 @@ function render_header() {
                 </header>
             </body>
         </html>';
-}
+    }
 ?>
 
 <!--Encart sur le côté gauche : photo du user, présentation de la page-->
@@ -56,14 +56,13 @@ function render_header() {
                     <p>'.htmlSpecialChars($presentation).'</p>
                 </section>
             </aside>';   
-
     }        
 ?>
 
 
 
 
-<?php 
+<?php
 function bienvenue() {
     echo
         '<aside>
@@ -74,4 +73,4 @@ function bienvenue() {
                 email, pseudonyme, mot de passe, posts, personnes qui vous suivez, personnes qui vous suivent.</p>
         </aside>';
 }
-?>
+?> 
