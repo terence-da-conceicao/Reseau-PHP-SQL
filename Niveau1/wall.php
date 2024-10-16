@@ -125,7 +125,7 @@
                             <time><?php echo $post['created'] ?></time>
                         </h3>
                             
-                            <address><a href="http://localhost/ProjetRS/Reseau-PHP-SQL/Niveau1/wall.php?user_id=<?php echo $userId ?>"> par <?php echo $user['alias'] ?></a></address>
+                            <address><a href="<?php echo $wallUrl ?>?user_id=<?php echo $userId ?>"> par <?php echo $user['alias'] ?></a></address>
                         <div>
                             <p><?php echo $post['content'] ?></p>
                         </div>                                            
