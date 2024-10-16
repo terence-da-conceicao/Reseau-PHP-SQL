@@ -8,7 +8,7 @@
     <body>
     <?php
         render_header();
-        echo "WALL"; ?>
+        //echo "WALL"; ?>
 
         <div id="wrapper">
             <?php
@@ -39,12 +39,59 @@
                         </p>
                 </section>
             </aside>
-            <main>
+            <main> 
+                <form method=POST>
+                    <label for="new_post">Nouveau message</label><br>
+                    <textarea name="new_post" rows=8 style="width: 55%; font-family: Arial" label="new_message">Rédigez un nouveau message</textarea><br>
+                    <label for="choose_tags">Ajoutez des mots-clés</label><br>
+                    <select name="choose_tags[]" multiple>
+                        <option value="">--choisissez un ou plusieurs tags--</option>
+                        <?php 
+                        $query_tags = "
+                        SELECT * FROM tags
+                        ";
+                        $result = $mysqli -> query ($query_tags);
+                        while ($options = mysqli_fetch_array($result)) {
+                            echo "<option value='" . $options['id'] . "'>" . $options['label'] . "</option>";
+                        }
+                        ?>
+                    </select><br>
+                    <input type="submit" value="Publiez" /><br>
+                </form>
                 <?php
+                    //ajout du nouveau message à la BDD
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $new_post = $mysqli->real_escape_string($_POST['new_post']);
+                        $add_tags = $_POST['choose_tags'];
+
+                        $new_post_sql = "
+                        INSERT INTO posts (id, user_id, content, created) 
+                        VALUES (NULL, '$userId', '$new_post', NOW());
+                        ";
+                    //ajout des tags si message créé
+                        if ($mysqli->query($new_post_sql)) {
+                            $post_id = $mysqli->insert_id;
+                            if (!empty($add_tags)) {
+                                foreach ($add_tags as $tag_id) {
+                                    $tag_id = intval($tag_id); // Sécurise l'ID du tag
+                                    $insert_tag_sql = "
+                                    INSERT INTO posts_tags (post_id, tag_id)
+                                    VALUES ('$post_id', '$tag_id');
+                                    ";
+                                    $mysqli->query($insert_tag_sql);
+                                }
+                            }
+                            echo "Le message a été publié avec succès !";
+                            } else {
+                            echo "Échec de l'insertion du message : " . $mysqli->error;
+                        }
+                    }
+
                 // Etape 4: récupérer tous les messages de l'utilisatrice
                 $laQuestionEnSql = "
                     SELECT posts.content, posts.created, users.alias as author_name, 
-                    COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label) AS taglist 
+                    COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label ) AS taglist,
+                    GROUP_CONCAT(DISTINCT tags.id ORDER BY tags.label) AS idlist 
                     FROM posts
                     JOIN users ON  users.id=posts.user_id
                     LEFT JOIN posts_tags ON posts.id = posts_tags.post_id  
@@ -64,9 +111,13 @@
                 while ($post = $lesInformations->fetch_assoc())
 
                 {
-
                 include './Assets/includes/generated_url.php';
                 $tag_list = explode(",", $post['taglist']);
+                $id_list = explode(",", $post['idlist']);
+                $tag_id_list = array_combine ($id_list, $tag_list);
+                $arr = array_values($tag_list);
+              
+                print_r (sort($arr));
 
                 ?>
 
@@ -82,8 +133,12 @@
                         </div>                                            
                         <footer>
                             <small>♥ <?php echo $post['like_number'] ?></small>
-                            <a href="./tags.php?tag_id=">#<?php echo $post['taglist'] ?></a>
+
+                            <?php foreach ($tag_id_list as $key => $data): ?>
+                                <a href="./tags.php?tag_id=<?= $key ?>">#<?= $data ?></a>
+                            <?php endforeach  ?>
                         </footer>
+                    
                     </article>
                 <?php
                 }
