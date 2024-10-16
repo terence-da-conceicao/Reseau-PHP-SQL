@@ -8,7 +8,7 @@
     <body>
     <?php
         render_header();
-        echo "WALL"; ?>
+        //echo "WALL"; ?>
 
         <div id="wrapper">
             <?php
@@ -42,10 +42,10 @@
             <main> 
                 <form method=POST>
                     <label for="new_post">Nouveau message</label><br>
-                    <textarea name="new_post" rows=7 columns=90 label="new_message">Rédigez un nouveau message</textarea><br>
+                    <textarea name="new_post" rows=8 style="width: 55%; font-family: Arial" label="new_message">Rédigez un nouveau message</textarea><br>
                     <label for="choose_tags">Ajoutez des mots-clés</label><br>
-                    <select name="choose_tags" multiple>
-                        <option value="">--Choisissez un ou plusieurs tags--</option>
+                    <select name="choose_tags[]" multiple>
+                        <option value="">--choisissez un ou plusieurs tags--</option>
                         <?php 
                         $query_tags = "
                         SELECT * FROM tags
@@ -59,11 +59,39 @@
                     <input type="submit" value="Publiez" /><br>
                 </form>
                 <?php
+                    //ajout du nouveau message à la BDD
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $new_post = $mysqli->real_escape_string($_POST['new_post']);
+                        $add_tags = $_POST['choose_tags'];
+
+                        $new_post_sql = "
+                        INSERT INTO posts (id, user_id, content, created) 
+                        VALUES (NULL, '$userId', '$new_post', NOW());
+                        ";
+                    //ajout des tags si message créé
+                        if ($mysqli->query($new_post_sql)) {
+                            $post_id = $mysqli->insert_id;
+                            if (!empty($add_tags)) {
+                                foreach ($add_tags as $tag_id) {
+                                    $tag_id = intval($tag_id); // Sécurise l'ID du tag
+                                    $insert_tag_sql = "
+                                    INSERT INTO posts_tags (post_id, tag_id)
+                                    VALUES ('$post_id', '$tag_id');
+                                    ";
+                                    $mysqli->query($insert_tag_sql);
+                                }
+                            }
+                            echo "Le message a été publié avec succès !";
+                            } else {
+                            echo "Échec de l'insertion du message : " . $mysqli->error;
+                        }
+                    }
+
                 // Etape 4: récupérer tous les messages de l'utilisatrice
                 $laQuestionEnSql = "
                     SELECT posts.content, posts.created, users.alias as author_name, 
-                    COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label ORDER BY tags.id) AS taglist,
-                    GROUP_CONCAT(DISTINCT tags.id) AS idlist 
+                    COUNT(likes.id) as like_number, GROUP_CONCAT(DISTINCT tags.label ) AS taglist,
+                    GROUP_CONCAT(DISTINCT tags.id ORDER BY tags.label) AS idlist 
                     FROM posts
                     JOIN users ON  users.id=posts.user_id
                     LEFT JOIN posts_tags ON posts.id = posts_tags.post_id  
@@ -87,7 +115,9 @@
                 $tag_list = explode(",", $post['taglist']);
                 $id_list = explode(",", $post['idlist']);
                 $tag_id_list = array_combine ($id_list, $tag_list);
-                //var_dump ($tag_id_list);
+                $arr = array_values($tag_list);
+              
+                print_r (sort($arr));
 
                 ?>
 
@@ -104,20 +134,14 @@
                         <footer>
                             <small>♥ <?php echo $post['like_number'] ?></small>
 
-                            <?php 
-                            foreach ($tag_id_list as $key => $data)
-                            { ?>
-                            <a href="./tags.php?tag_id=<?php echo $key?>">#<?php echo $data?></a>
-                            <?php
-                            }
-                            ?>
+                            <?php foreach ($tag_id_list as $key => $data): ?>
+                                <a href="./tags.php?tag_id=<?= $key ?>">#<?= $data ?></a>
+                            <?php endforeach  ?>
                         </footer>
                     
                     </article>
                 <?php
                 }
-                var_dump ($post);
-                die();
                 ?>
 
             </main>
