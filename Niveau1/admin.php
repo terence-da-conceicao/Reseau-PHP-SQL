@@ -35,7 +35,7 @@
                     
                     ?>
                     <article>
-                        <h3><?php echo $tag['label'] ?></h3>
+                        <h3><a href="./tags.php?tag_id=<?php echo $tag['id']?>"> <?php echo $tag['label'] ?> </a></h3>
                         <p>id:<?php echo $tag['id'] ?> </p>
                         <nav>
                             <a href="tags.php?tag_id=<?php echo $tag['id'] ?>">Messages</a>

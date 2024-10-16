@@ -40,7 +40,8 @@
                     users.alias as author_name,
                     users.id,
                     count(likes.id) as like_number,  
-                    GROUP_CONCAT(DISTINCT tags.label) AS taglist 
+                    GROUP_CONCAT(DISTINCT tags.label ORDER BY tags.id) AS taglist,
+                    GROUP_CONCAT(DISTINCT tags.id) AS idlist 
                     FROM followers 
                     JOIN users ON users.id=followers.followed_user_id
                     JOIN posts ON posts.user_id=users.id
@@ -63,7 +64,9 @@
                 {
 
                 include './Assets/includes/generated_url.php';
-
+                $tag_list = explode(",", $user['taglist']);
+                $id_list = explode(",", $user['idlist']);
+                $tag_id_list = array_combine ($id_list, $tag_list);
                 ?>
                                 
                 <article>
@@ -78,7 +81,11 @@
                     </div>                                            
                     <footer>
                         <small>♥ <?php echo $user['like_number'] ?></small>
-                        <a href="./tags.php?tag_id="><?php echo $user['taglist'] ?></a>
+                        <?php 
+                        foreach ($tag_id_list as $key => $data)
+                        { ?>
+                        <a href="./tags.php?tag_id=<?php echo $key?>">#<?php echo $data?></a>
+                        <?php } ?>
                     </footer>
                 </article>
                 <?php

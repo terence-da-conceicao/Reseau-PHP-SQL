@@ -57,7 +57,8 @@
                     users.alias as author_name,  
                     count(likes.id) as like_number,  
                     tags.label AS onetag,
-                    GROUP_CONCAT(DISTINCT tags.label) AS taglist 
+                    GROUP_CONCAT(DISTINCT tags.label ORDER BY tags.id) AS taglist,
+                    GROUP_CONCAT(DISTINCT tags.id) AS idlist 
 
                     FROM posts_tags as filter
 
@@ -76,11 +77,15 @@
                     echo("Échec de la requete : " . $mysqli->error);
                 }
 
-                include './Assets/includes/generated_url.php';
+                
 
                 // Etape 4: Parcourir les messsages et remplir le HTML
                 while ($post = $lesInformations->fetch_assoc())
                 {
+                include './Assets/includes/generated_url.php';
+                $tag_list = explode(",", $post['taglist']);
+                $id_list = explode(",", $post['idlist']);
+                $tag_id_list = array_combine ($id_list, $tag_list);
                 ?>
 
                     <article>
@@ -93,7 +98,11 @@
                         </div>                                            
                         <footer>
                             <small>♥ <?php echo $post['like_number'] ?></small>
-                            <a href="./tags.php?tag_id=">#<?php echo $post['taglist'] ?></a>
+                            <?php
+                            foreach ($tag_id_list as $key => $data) 
+                            { ?>
+                            <a href="./tags.php?tag_id=<?php echo $key?>">#<?php echo $data?></a>
+                            <?php } ?>
                         </footer>
                     </article>
                 <?php
