@@ -32,7 +32,7 @@
 
             <main>
                 <?php
-                // Etape 3: récupérer tous les messages des abonnements
+                // récupérer tous les messages des abonnements
                 
                 $laQuestionEnSql = "
                     SELECT posts.content,
@@ -58,7 +58,7 @@
                     echo("Échec de la requete : " . $mysqli->error);
                 }
 
-                // Etape 4: Parcourir les messsages et remplir le HTML
+                // Parcourir les messsages et remplir le HTML
                  
                 while ($user = $lesInformations->fetch_assoc())
                 {

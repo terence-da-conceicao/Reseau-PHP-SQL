@@ -18,9 +18,7 @@
             <aside>
                 <h2>Mots-clés</h2>
                 <?php
-                /*
-                 * Etape 2 : trouver tous les mots clés + vérification
-                 */
+                // trouver tous les mots clés + vérification
                 $laQuestionEnSql = "SELECT * FROM `tags` LIMIT 50";
                 $lesInformations = sql_query($laQuestionEnSql);
                 if ( ! $lesInformations)
@@ -29,7 +27,7 @@
                     exit();
                 }
 
-                // Etape 3 : Afficher les mots clés 
+                // Afficher les mots clés 
                 while ($tag = $lesInformations->fetch_assoc())
                 {
                     
@@ -49,7 +47,7 @@
                 <main>
                     <h2>Utilisatrices</h2>
                     <?php
-                // Etape 4 : trouver tous les mots clés + vérification
+                // trouver tous les mots clés + vérification
                 
                 $laQuestionEnSql = "SELECT * FROM `users` LIMIT 50";
                 $lesInformations = sql_query($laQuestionEnSql);
@@ -60,7 +58,7 @@
                     exit();
                 }
 
-                // Etape 5 : @todo : Afficher les utilisatrices 
+                // Afficher les utilisatrices 
                 while ($users = $lesInformations->fetch_assoc())
                 {
                     include './Assets/includes/generated_url.php';

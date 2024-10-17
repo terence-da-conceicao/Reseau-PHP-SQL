@@ -34,8 +34,7 @@
                         GROUP BY users.id
                         ";
                     $lesInformations = sql_query($laQuestionEnSql);
-                // Etape 4: à vous de jouer
-                //@todo: faire la boucle while de parcours des abonnés et mettre les bonnes valeurs ci dessous
+                
                 if (!$lesInformations)
                 {
                     echo "<article>";

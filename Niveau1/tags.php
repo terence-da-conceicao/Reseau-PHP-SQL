@@ -13,19 +13,12 @@
     
         <div id="wrapper">
             <?php
-            /**
-             * Cette page est similaire à wall.php ou feed.php 
-             * mais elle porte sur les mots-clés (tags)
-             */
-            /**
-             * Etape 1: Le mur concerne un mot-clé en particulier
-             */
+            // Etape 1: Le mur concerne un mot-clé en particulier
+            
             $tagId = intval($_GET['tag_id']);
             ?>
             <?php
-            /**
-             * Etape 2: se connecter à la base de donnée
-             */
+            // Etape 2: se connecter à la base de donnée
             include './Assets/includes/sql_connect.php';
             connect();
             ?>

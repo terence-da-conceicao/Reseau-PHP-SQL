@@ -21,7 +21,7 @@
                     include './Assets/includes/sql_connect.php';
                     connect();
 
-                    // Etape 2: Poser une question à la base de donnée et récupérer ses informations + vérification
+                    // Poser une question à la base de donnée et récupérer ses informations + vérification
                     $laQuestionEnSql = "
                         SELECT posts.content,
                         posts.created,
@@ -51,8 +51,7 @@
 
                 
 
-                // Etape 3: Parcourir ces données et les ranger bien comme il faut dans du html
-                // NB: à chaque tour du while, la variable post ci dessous reçois les informations du post suivant.
+                // Parcourir ces données et les ranger bien comme il faut dans du html
                 while ($post = $lesInformations->fetch_assoc())
                 {
                     include './Assets/includes/generated_url.php';
@@ -60,15 +59,7 @@
                     $id_list = explode(",", $post['idlist']);
                     $tag_id_list = array_combine ($id_list, $tag_list);
 
-                    //la ligne ci-dessous doit etre supprimée mais regardez ce 
-                    //qu'elle affiche avant pour comprendre comment sont organisées les information dans votre 
-                    //echo "<pre>" . print_r($post, 1) . "</pre>";
-
-                    // @todo : Votre mission c'est de remplacer les AREMPLACER par les bonnes valeurs
-                    // ci-dessous par les bonnes valeurs cachées dans la variable $post 
-                    // on vous met le pied à l'étrier avec created
-                    // 
-                    // avec le ? > ci-dessous on sort du mode php et on écrit du html comme on veut... mais en restant dans la boucle
+                    
                     ?>
                     <article>
                         <h3>
@@ -89,8 +80,7 @@
                         </footer>
                     </article>
                 <?php
-                    // avec le <?php ci-dessus on retourne en mode php 
-                }// cette accolade ferme et termine la boucle while ouverte avant.
+                }
                 ?>
 
             </main>
