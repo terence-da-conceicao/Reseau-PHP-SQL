@@ -9,7 +9,7 @@
     <body>
     <?php
         render_header(); 
-        echo "NEWS";?>
+        //echo "NEWS";?>
 
         <div id="wrapper">
             <?php 

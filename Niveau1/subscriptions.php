@@ -11,7 +11,7 @@
     <body>
     <?php
         render_header(); 
-        echo "SUBSCRIPTIONS"; ?>
+        //echo "SUBSCRIPTIONS"; ?>
     
 <!--connexion sql_connect? -->
 

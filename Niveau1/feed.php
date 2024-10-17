@@ -8,7 +8,7 @@
     <body>
         <?php
         render_header();
-        echo "FEED"; ?>
+        //echo "FEED"; ?>
         
         
         <div id="wrapper">

@@ -11,7 +11,7 @@
     <body>
         <?php
         render_header();
-        echo "FOLLOWERS"; ?>
+        //echo "FOLLOWERS"; ?>
     
         <div id="wrapper">          
             <?php 

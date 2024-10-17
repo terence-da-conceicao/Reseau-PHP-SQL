@@ -9,7 +9,7 @@
     <body>
         <?php
         render_header();
-        echo "ADMIN"; ?>
+        //echo "ADMIN"; ?>
         
         <?php include './Assets/includes/sql_connect.php';
         connect(); ?>

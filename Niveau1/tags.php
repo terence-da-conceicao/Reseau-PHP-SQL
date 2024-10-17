@@ -9,7 +9,7 @@
     <body>
     <?php
         render_header();
-        echo "TAGS"; ?>
+        //echo "TAGS"; ?>
     
         <div id="wrapper">
             <?php

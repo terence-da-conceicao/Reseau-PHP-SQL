@@ -1,3 +1,8 @@
+<?= session_start(); 
+print_r($_SESSION['user_id']); 
+$session_user_id = $_SESSION['user_id'];
+?>
+
 <!doctype html>
 <html lang="fr">
     <?php 
@@ -37,12 +42,33 @@
                         <p>Sur cette page vous trouverez tous les message de l'utilisatrice : <?php echo $user['alias'] ?>
                         (n° <?php echo $userId ?>)
                         </p>
-                        <button>S'abonner</button>
+                        <!-- <form method=POST>
+                            <button type=button onclick="clicked_button()">S'abonner</button>
+                        </form>
+                        <?php 
+                        // function clicked_button() {
+                        //     global $session_user_id;
+                        //     global $mysqli;
+                        //     global $userId;
+                        //     $is_following_sql = "SELECT * FROM followers 
+                        //     WHERE followed_user_id = '$session_user_id'";
+                        //     $question = $mysqli->query($is_following_sql);
+                        //     $is_following = $question->fetch_array();
+                        //     print_r($is_following);
+                        //     if (in_array($userId,$is_following)) {
+                        //         echo "Vous suivez déja cette personne";
+                        //     } else {
+                        //         $new_follower_sql = "INSERT INTO followers (followed_user_id, following_user_id)
+                        //         VALUES ($userId, $session_user_id)";
+                        //         echo "Vous suivez maintenant $userId";
+                        //     };
+                        // }
+                        // clicked_button(); ?> -->
                 </section>
             </aside>
             <main> 
                 <!-- formulaire pour nouveau message + tableau tags -->
-                <form method=POST>
+                <form method=POST style="line-height: 1.5">
                     <label for="new_post">Nouveau message</label><br>
                     <textarea name="new_post" rows=8 style="width: 55%; font-family: Arial" label="new_message">Rédigez un nouveau message</textarea><br>
                     <label for="choose_tags">Ajoutez des mots-clés</label><br>

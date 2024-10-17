@@ -13,7 +13,7 @@ session_start();
     <body>
     <?php
         render_header();
-        echo "USURPEDPOST"; ?>
+        //echo "USURPEDPOST"; ?>
 
         <div id="wrapper" >
 
