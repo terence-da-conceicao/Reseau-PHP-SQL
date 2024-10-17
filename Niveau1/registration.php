@@ -12,8 +12,8 @@
     <body>
         <?php
         render_header(); 
-        echo "REGISTRATION"; ?>
-        <?php include './Assets/includes/sql_connect.php'; ?>
+        //echo "REGISTRATION"; 
+        include './Assets/includes/sql_connect.php'; ?>
 
 
         <div id="wrapper" >

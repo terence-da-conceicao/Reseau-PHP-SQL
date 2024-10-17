@@ -17,7 +17,7 @@
     <body>
         <?php
         render_header();
-        echo "SETTINGS"; ?>
+        //echo "SETTINGS"; ?>
 
         <?php include './Assets/includes/sql_connect.php'; 
         connect(); ?>

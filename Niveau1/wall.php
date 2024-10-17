@@ -1,3 +1,8 @@
+<?= session_start(); 
+print_r($_SESSION['user_id']); 
+$session_user_id = $_SESSION['user_id'];
+?>
+
 <!doctype html>
 <html lang="fr">
     <?php 
@@ -37,12 +42,38 @@
                         <p>Sur cette page vous trouverez tous les message de l'utilisatrice : <?php echo $user['alias'] ?>
                         (n° <?php echo $userId ?>)
                         </p>
-                        <button>S'abonner</button>
+                        <form method="POST">
+                            <button type="submit" name="follow">S'abonner</button>
+                        </form>
+
+                        <?php
+                    //     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['follow'])) {
+                    //         // Vérifiez si l'utilisateur suit déjà
+                    //         $stmt = $mysqli->prepare("SELECT * FROM followers WHERE followed_user_id = ? AND following_user_id = ?");
+                    //         $stmt->bind_param("ii", $userId, $session_user_id);
+                    //         $stmt->execute();
+                    //         $result_follow = $stmt->get_result();
+
+                    //         if ($result_follow->num_rows > 0) {
+                    //         echo "Vous suivez déjà cette personne.";
+                    //     } else {
+                    //         // Ajoutez l'abonnement
+                    //         $stmt = $mysqli->prepare("INSERT INTO followers (followed_user_id, following_user_id) VALUES (?, ?)");
+                    //         $stmt->bind_param("ii", $userId, $session_user_id);
+                    //         if ($stmt->execute()) {
+                    //             echo "Vous suivez maintenant cet utilisateur.";
+                    //         } else {
+                    //             echo "Échec de l'abonnement : " . $stmt->error;
+                    //         }
+                    //     }
+                    // }
+                    ?>
+
                 </section>
             </aside>
             <main> 
                 <!-- formulaire pour nouveau message + tableau tags -->
-                <form method=POST>
+                <form method=POST style="line-height: 1.5">
                     <label for="new_post">Nouveau message</label><br>
                     <textarea name="new_post" rows=8 style="width: 55%; font-family: Arial" label="new_message">Rédigez un nouveau message</textarea><br>
                     <label for="choose_tags">Ajoutez des mots-clés</label><br>
@@ -52,8 +83,8 @@
                         $query_tags = "
                         SELECT * FROM tags
                         ";
-                        $result = $mysqli -> query ($query_tags);
-                        while ($options = mysqli_fetch_array($result)) {
+                        $result_post = $mysqli -> query ($query_tags);
+                        while ($options = mysqli_fetch_array($result_post)) {
                             echo "<option value='" . $options['id'] . "'>" . $options['label'] . "</option>";
                         }
                         ?>

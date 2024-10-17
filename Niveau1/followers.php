@@ -11,11 +11,12 @@
     <body>
         <?php
         render_header();
-        echo "FOLLOWERS"; ?>
+        //echo "FOLLOWERS"; ?>
     
         <div id="wrapper">          
             <?php 
 
+                // récupérer l'id de l'utilisateur
                 $userId = intval($_GET['user_id']);
 
 
@@ -26,16 +27,11 @@
             <main class='contacts'>
                 <?php
 
-
-
-                    // Etape 1: récupérer l'id de l'utilisateur
-                    //$userId = intval($_GET['user_id']);
-
-                    // Etape 2: se connecter à la base de donnée
+                    // se connecter à la base de donnée
                     include './Assets/includes/sql_connect.php'; 
                     connect();
 
-                    // Etape 3: récupérer le nom de l'utilisateur
+                    // récupérer le nom de l'utilisateur
                     $laQuestionEnSql = "
                         SELECT users.*
                         FROM followers
@@ -45,7 +41,6 @@
                         ";
                         $lesInformations = sql_query($laQuestionEnSql);
 
-                    // Etape 4
                     if (!$lesInformations)
                     {
                         echo "<article>";

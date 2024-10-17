@@ -1,4 +1,7 @@
-<!--<php session_start(); ?>"-->
+<?= session_start(); 
+// session_unset();
+// session_destroy();
+?>
 
 <!doctype html>
 <html lang="fr">
@@ -10,7 +13,7 @@
     <body>
         <?php 
             render_header(); 
-            echo "LOGIN"; ?>
+            //echo "LOGIN"; ?>
 
         <div id="wrapper" >
             <?php bienvenue(); ?>
@@ -69,7 +72,7 @@
 
                             if ($connexionEmail === true && $connexionPassword === true) {
                                 echo "Votre connexion est un succès, ".$user['alias'].".";
-                                /*$_SESSION['connected_id']=$user['id'];*/
+                                $_SESSION['user_id']=$user['id'];
                             } else {
                                 echo "<br>Connexion échouée";
                             }
