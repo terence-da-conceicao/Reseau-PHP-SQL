@@ -1,5 +1,5 @@
 <?= session_start(); 
-print_r($_SESSION['user_id']); 
+//print_r($_SESSION['user_id']); 
 $session_user_id = $_SESSION['user_id'];
 ?>
 
@@ -47,26 +47,26 @@ $session_user_id = $_SESSION['user_id'];
                         </form>
 
                         <?php
-                    //     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['follow'])) {
-                    //         // Vérifiez si l'utilisateur suit déjà
-                    //         $stmt = $mysqli->prepare("SELECT * FROM followers WHERE followed_user_id = ? AND following_user_id = ?");
-                    //         $stmt->bind_param("ii", $userId, $session_user_id);
-                    //         $stmt->execute();
-                    //         $result_follow = $stmt->get_result();
+                        if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['follow'])) {
+                            // Vérifiez si l'utilisateur suit déjà
+                            $stmt = $mysqli->prepare("SELECT * FROM followers WHERE followed_user_id = ? AND following_user_id = ?");
+                            $stmt->bind_param("ii", $userId, $session_user_id);
+                            $stmt->execute();
+                            $result_follow = $stmt->get_result();
 
-                    //         if ($result_follow->num_rows > 0) {
-                    //         echo "Vous suivez déjà cette personne.";
-                    //     } else {
-                    //         // Ajoutez l'abonnement
-                    //         $stmt = $mysqli->prepare("INSERT INTO followers (followed_user_id, following_user_id) VALUES (?, ?)");
-                    //         $stmt->bind_param("ii", $userId, $session_user_id);
-                    //         if ($stmt->execute()) {
-                    //             echo "Vous suivez maintenant cet utilisateur.";
-                    //         } else {
-                    //             echo "Échec de l'abonnement : " . $stmt->error;
-                    //         }
-                    //     }
-                    // }
+                            if ($result_follow->num_rows > 0) {
+                            echo "Vous suivez déjà cette personne.";
+                        } else {
+                            // Ajoutez l'abonnement
+                            $stmt = $mysqli->prepare("INSERT INTO followers (followed_user_id, following_user_id) VALUES (?, ?)");
+                            $stmt->bind_param("ii", $userId, $session_user_id);
+                            if ($stmt->execute()) {
+                                echo "Vous suivez maintenant cet utilisateur.";
+                            } else {
+                                echo "Échec de l'abonnement : " . $stmt->error;
+                            }
+                        }
+                    }
                     ?>
 
                 </section>
@@ -93,7 +93,7 @@ $session_user_id = $_SESSION['user_id'];
                 </form>
                 <?php
                     //ajout du nouveau message à la BDD
-                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['new_post'])) {
                         $new_post = $mysqli->real_escape_string($_POST['new_post']);
                         $add_tags = $_POST['choose_tags'];
 
